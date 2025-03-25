@@ -1,6 +1,7 @@
 
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { 
   Home, 
   MessageSquare, 
@@ -8,7 +9,7 @@ import {
   Bot, 
   Settings, 
   HelpCircle, 
-  Link,
+  Link as LinkIcon,
   X
 } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -18,17 +19,19 @@ type SidebarProps = {
   onClose: () => void;
 };
 
-const sidebarLinks = [
-  { name: "Dashboard", path: "/dashboard", icon: Home },
-  { name: "Chat", path: "/chat", icon: MessageSquare },
-  { name: "Knowledge Base", path: "/knowledge-base", icon: Database },
-  { name: "Agents", path: "/agents", icon: Bot },
-  { name: "Integrações", path: "/integrations", icon: Link },
-  { name: "Settings", path: "/settings", icon: Settings },
-  { name: "Help", path: "/help", icon: HelpCircle },
-];
-
 const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
+  const { t } = useTranslation();
+
+  const sidebarLinks = [
+    { name: t('common.dashboard'), path: "/dashboard", icon: Home },
+    { name: t('common.chat'), path: "/chat", icon: MessageSquare },
+    { name: t('common.knowledgeBase'), path: "/knowledge-base", icon: Database },
+    { name: t('common.agents'), path: "/agents", icon: Bot },
+    { name: t('common.integrations'), path: "/integrations", icon: LinkIcon },
+    { name: t('common.settings'), path: "/settings", icon: Settings },
+    { name: t('common.help'), path: "/help", icon: HelpCircle },
+  ];
+
   return (
     <>
       {/* Mobile overlay */}
@@ -90,7 +93,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
         <div className="absolute bottom-0 left-0 right-0 p-4">
           <div className="glass-card bg-opacity-50 dark:bg-opacity-20 flex items-center justify-center py-3">
             <span className="text-xs text-center opacity-70">
-              JARVIS AI v1.0.0
+              JARVIS AI {t('common.version')}
             </span>
           </div>
         </div>

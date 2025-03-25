@@ -2,7 +2,9 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Moon, Sun, Menu } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import SuperbidButton from "../ui/SuperbidButton";
+import LanguageSwitcher from "../ui/LanguageSwitcher";
 import { cn } from "@/lib/utils";
 
 type HeaderProps = {
@@ -10,6 +12,7 @@ type HeaderProps = {
 };
 
 const Header: React.FC<HeaderProps> = ({ onMenuClick }) => {
+  const { t } = useTranslation();
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -62,6 +65,8 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick }) => {
           </div>
 
           <div className="flex items-center gap-4">
+            <LanguageSwitcher />
+            
             <SuperbidButton
               variant="ghost"
               size="icon"
@@ -74,12 +79,12 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick }) => {
             <div className="hidden md:flex items-center gap-4">
               <Link to="/login">
                 <SuperbidButton variant="outline" size="sm">
-                  Login
+                  {t('common.login')}
                 </SuperbidButton>
               </Link>
               <Link to="/register">
                 <SuperbidButton variant="primary" size="sm">
-                  Register
+                  {t('common.register')}
                 </SuperbidButton>
               </Link>
             </div>

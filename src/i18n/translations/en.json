@@ -1,0 +1,30 @@
+
+{
+  "common": {
+    "login": "Login",
+    "register": "Register",
+    "dashboard": "Dashboard",
+    "chat": "Chat",
+    "knowledgeBase": "Knowledge Base",
+    "agents": "Agents",
+    "integrations": "Integrations",
+    "settings": "Settings",
+    "help": "Help",
+    "version": "v1.0.0"
+  },
+  "login": {
+    "welcomeTitle": "Welcome to Jarvis AI",
+    "welcomeDescription": "The complete platform for building, deploying, and managing AI agents with your own knowledge base."
+  },
+  "register": {
+    "joinTitle": "Join the AI Revolution",
+    "joinDescription": "Create custom AI agents, build knowledge bases, and deploy intelligent solutions for your business."
+  },
+  "dashboard": {
+    "welcome": "Welcome to Jarvis AI",
+    "subtitle": "Your AI platform for building intelligent solutions",
+    "modules": "Modules",
+    "recentActivity": "Recent Activity",
+    "quickActions": "Quick Actions"
+  }
+}

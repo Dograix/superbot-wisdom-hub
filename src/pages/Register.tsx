@@ -1,9 +1,12 @@
 
 import React from "react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import RegisterForm from "@/components/auth/RegisterForm";
 
 const Register = () => {
+  const { t } = useTranslation();
+
   return (
     <div className="min-h-screen flex flex-col md:flex-row">
       {/* Left Side - Background Image/Design */}
@@ -11,9 +14,9 @@ const Register = () => {
         <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-superbid-500/20"></div>
         <div className="relative z-10 flex flex-col justify-center items-center p-16 text-center">
           <div className="glass-card max-w-md">
-            <h2 className="text-2xl font-bold mb-4">Join the AI Revolution</h2>
+            <h2 className="text-2xl font-bold mb-4">{t('register.joinTitle')}</h2>
             <p className="text-muted-foreground mb-4">
-              Create custom AI agents, build knowledge bases, and deploy intelligent solutions for your business.
+              {t('register.joinDescription')}
             </p>
             <div className="flex justify-center space-x-3 py-4">
               <span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span>

@@ -1,5 +1,6 @@
 
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 import Header from "@/components/layout/Header";
 import Sidebar from "@/components/layout/Sidebar";
 import DashboardCard from "@/components/dashboard/DashboardCard";
@@ -9,6 +10,7 @@ import QuickActions from "@/components/dashboard/QuickActions";
 import { getDashboardData } from "@/data/dashboardData";
 
 const Dashboard = () => {
+  const { t } = useTranslation();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const { modules, stats, activities, quickActions, getStartedSteps } = getDashboardData();
 
@@ -25,9 +27,9 @@ const Dashboard = () => {
         <div className="container mx-auto p-6">
           {/* Welcome section */}
           <div className="mb-8">
-            <h1 className="text-3xl font-bold mb-2">Welcome to Jarvis AI</h1>
+            <h1 className="text-3xl font-bold mb-2">{t('dashboard.welcome')}</h1>
             <p className="text-muted-foreground">
-              Your AI platform for building intelligent solutions
+              {t('dashboard.subtitle')}
             </p>
           </div>
 
@@ -44,7 +46,7 @@ const Dashboard = () => {
           </div>
 
           {/* Modules section */}
-          <h2 className="text-2xl font-bold mb-6">Modules</h2>
+          <h2 className="text-2xl font-bold mb-6">{t('dashboard.modules')}</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
             {modules.map((module, index) => (
               <DashboardCard
@@ -61,12 +63,12 @@ const Dashboard = () => {
           {/* Recent Activity & Quick Actions */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <div className="lg:col-span-2">
-              <h2 className="text-2xl font-bold mb-6">Recent Activity</h2>
+              <h2 className="text-2xl font-bold mb-6">{t('dashboard.recentActivity')}</h2>
               <RecentActivity activities={activities} />
             </div>
 
             <div>
-              <h2 className="text-2xl font-bold mb-6">Quick Actions</h2>
+              <h2 className="text-2xl font-bold mb-6">{t('dashboard.quickActions')}</h2>
               <QuickActions 
                 actions={quickActions}
                 steps={getStartedSteps}

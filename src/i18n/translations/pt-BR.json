@@ -1,0 +1,30 @@
+
+{
+  "common": {
+    "login": "Entrar",
+    "register": "Cadastrar",
+    "dashboard": "Painel",
+    "chat": "Chat",
+    "knowledgeBase": "Base de Conhecimento",
+    "agents": "Agentes",
+    "integrations": "Integrações",
+    "settings": "Configurações",
+    "help": "Ajuda",
+    "version": "v1.0.0"
+  },
+  "login": {
+    "welcomeTitle": "Bem-vindo ao Jarvis AI",
+    "welcomeDescription": "A plataforma completa para construir, implantar e gerenciar agentes de IA com sua própria base de conhecimento."
+  },
+  "register": {
+    "joinTitle": "Junte-se à Revolução da IA",
+    "joinDescription": "Crie agentes de IA personalizados, construa bases de conhecimento e implante soluções inteligentes para seu negócio."
+  },
+  "dashboard": {
+    "welcome": "Bem-vindo ao Jarvis AI",
+    "subtitle": "Sua plataforma de IA para construir soluções inteligentes",
+    "modules": "Módulos",
+    "recentActivity": "Atividade Recente",
+    "quickActions": "Ações Rápidas"
+  }
+}
