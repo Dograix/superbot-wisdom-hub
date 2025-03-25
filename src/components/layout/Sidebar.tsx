@@ -8,6 +8,7 @@ import {
   Bot, 
   Settings, 
   HelpCircle, 
+  Link,
   X
 } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -22,6 +23,7 @@ const sidebarLinks = [
   { name: "Chat", path: "/chat", icon: MessageSquare },
   { name: "Knowledge Base", path: "/knowledge-base", icon: Database },
   { name: "Agents", path: "/agents", icon: Bot },
+  { name: "Integrações", path: "/integrations", icon: Link },
   { name: "Settings", path: "/settings", icon: Settings },
   { name: "Help", path: "/help", icon: HelpCircle },
 ];
