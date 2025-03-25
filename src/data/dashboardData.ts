@@ -1,6 +1,6 @@
 
-import { MessageSquare, Database, Bot } from "lucide-react";
 import React, { ReactNode } from "react";
+import { MessageSquare, Database, Bot } from "lucide-react";
 
 export type ModuleItem = {
   title: string;
@@ -42,21 +42,21 @@ export const getDashboardData = () => {
     {
       title: "Chat Interface",
       description: "Interact with your AI agents through an intuitive chat interface.",
-      icon: <MessageSquare size={24} />,
+      icon: React.createElement(MessageSquare, { size: 24 }),
       to: "/chat",
       delay: 0,
     },
     {
       title: "Knowledge Base",
       description: "Create and manage your custom knowledge bases.",
-      icon: <Database size={24} />,
+      icon: React.createElement(Database, { size: 24 }),
       to: "/knowledge-base",
       delay: 100,
     },
     {
       title: "AI Agents",
       description: "Configure and deploy custom AI agents for various tasks.",
-      icon: <Bot size={24} />,
+      icon: React.createElement(Bot, { size: 24 }),
       to: "/agents",
       delay: 200,
     },
@@ -97,19 +97,19 @@ export const getDashboardData = () => {
       title: "New agent created",
       description: "You created a new Customer Support agent",
       time: "2 hours ago",
-      icon: <Bot size={16} />,
+      icon: React.createElement(Bot, { size: 16 }),
     },
     {
       title: "Knowledge base updated",
       description: "Product Documentation base updated with 15 new documents",
       time: "Yesterday",
-      icon: <Database size={16} />,
+      icon: React.createElement(Database, { size: 16 }),
     },
     {
       title: "Chat session completed",
       description: "Completed a 25-message chat session with Marketing Agent",
       time: "2 days ago",
-      icon: <MessageSquare size={16} />,
+      icon: React.createElement(MessageSquare, { size: 16 }),
     },
   ];
 
