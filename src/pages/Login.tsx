@@ -10,7 +10,7 @@ const Login = () => {
       <div className="w-full md:w-1/2 flex flex-col justify-center items-center p-8 md:p-16">
         <div className="w-full max-w-md mb-8">
           <Link to="/" className="flex items-center gap-2 mb-12">
-            <span className="text-2xl font-bold text-gradient">SUPERBID</span>
+            <span className="text-2xl font-bold text-gradient">JARVIS</span>
             <span className="text-xl font-semibold">AI</span>
           </Link>
           <LoginForm />
@@ -22,7 +22,7 @@ const Login = () => {
         <div className="absolute inset-0 bg-gradient-to-br from-superbid-500/20 to-blue-500/20"></div>
         <div className="relative z-10 flex flex-col justify-center items-center p-16 text-center">
           <div className="glass-card max-w-md">
-            <h2 className="text-2xl font-bold mb-4">Welcome to Superbid AI</h2>
+            <h2 className="text-2xl font-bold mb-4">Welcome to Jarvis AI</h2>
             <p className="text-muted-foreground mb-4">
               The complete platform for building, deploying, and managing AI agents with your own knowledge base.
             </p>

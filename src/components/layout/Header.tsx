@@ -56,7 +56,7 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick }) => {
               <Menu size={20} />
             </button>
             <Link to="/" className="flex items-center gap-2">
-              <span className="text-2xl font-bold text-gradient">SUPERBID</span>
+              <span className="text-2xl font-bold text-gradient">JARVIS</span>
               <span className="text-xl font-semibold">AI</span>
             </Link>
           </div>

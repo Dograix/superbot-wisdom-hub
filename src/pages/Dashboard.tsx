@@ -25,7 +25,7 @@ const Dashboard = () => {
         <div className="container mx-auto p-6">
           {/* Welcome section */}
           <div className="mb-8">
-            <h1 className="text-3xl font-bold mb-2">Welcome to Superbid AI</h1>
+            <h1 className="text-3xl font-bold mb-2">Welcome to Jarvis AI</h1>
             <p className="text-muted-foreground">
               Your AI platform for building intelligent solutions
             </p>

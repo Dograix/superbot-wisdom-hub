@@ -61,7 +61,7 @@ const Index = () => {
               className="mb-6"
             >
               <span className="px-4 py-1.5 bg-superbid-50 dark:bg-superbid-900/30 text-superbid-600 dark:text-superbid-300 rounded-full text-sm font-medium">
-                Introducing Superbid AI
+                Introducing Jarvis AI
               </span>
             </motion.div>
 
@@ -114,7 +114,7 @@ const Index = () => {
                     <div className="inline-flex items-center justify-center mb-4 rounded-full w-16 h-16 bg-primary/10">
                       <Bot size={32} className="text-primary" />
                     </div>
-                    <h3 className="text-2xl font-medium">Superbid AI Platform</h3>
+                    <h3 className="text-2xl font-medium">Jarvis AI Platform</h3>
                     <p className="text-muted-foreground mt-2">Dashboard Preview</p>
                   </div>
                 </div>
@@ -166,7 +166,7 @@ const Index = () => {
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Transform Your AI Experience?</h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
-              Join thousands of businesses already leveraging Superbid AI to create intelligent solutions.
+              Join thousands of businesses already leveraging Jarvis AI to create intelligent solutions.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Link to="/register">
@@ -190,7 +190,7 @@ const Index = () => {
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-4 md:mb-0">
               <div className="flex items-center gap-2">
-                <span className="text-xl font-bold text-gradient">SUPERBID</span>
+                <span className="text-xl font-bold text-gradient">JARVIS</span>
                 <span className="text-lg font-semibold">AI</span>
               </div>
               <p className="text-sm text-muted-foreground">Building the future of AI. Together.</p>
@@ -208,7 +208,7 @@ const Index = () => {
             </div>
           </div>
           <div className="mt-8 pt-4 border-t border-border text-center text-sm text-muted-foreground">
-            &copy; {new Date().getFullYear()} Superbid AI. All rights reserved.
+            &copy; {new Date().getFullYear()} Jarvis AI. All rights reserved.
           </div>
         </div>
       </footer>

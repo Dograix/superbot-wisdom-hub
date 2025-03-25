@@ -50,7 +50,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
         )}
       >
         <div className="flex justify-between items-center p-4 md:hidden">
-          <span className="font-bold text-lg">SUPERBID AI</span>
+          <span className="font-bold text-lg">JARVIS AI</span>
           <button
             onClick={onClose}
             className="p-2 rounded-full hover:bg-sidebar-accent"
@@ -90,7 +90,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
         <div className="absolute bottom-0 left-0 right-0 p-4">
           <div className="glass-card bg-opacity-50 dark:bg-opacity-20 flex items-center justify-center py-3">
             <span className="text-xs text-center opacity-70">
-              SUPERBID AI v1.0.0
+              JARVIS AI v1.0.0
             </span>
           </div>
         </div>

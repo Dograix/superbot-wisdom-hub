@@ -33,7 +33,7 @@ const Register = () => {
       <div className="w-full md:w-1/2 flex flex-col justify-center items-center p-8 md:p-16">
         <div className="w-full max-w-md mb-8">
           <Link to="/" className="flex items-center gap-2 mb-12">
-            <span className="text-2xl font-bold text-gradient">SUPERBID</span>
+            <span className="text-2xl font-bold text-gradient">JARVIS</span>
             <span className="text-xl font-semibold">AI</span>
           </Link>
           <RegisterForm />
