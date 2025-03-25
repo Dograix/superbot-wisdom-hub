@@ -1,358 +1,295 @@
 
 import React, { useState } from "react";
-import { MessageSquare, Slack, Link, WhatsApp } from "lucide-react";
+import { 
+  Link2, MessageSquare, Webhook, Globe, Slack, 
+  ChevronRight, ExternalLink, PlusCircle, Trash2
+} from "lucide-react";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import SuperbidButton from "@/components/ui/SuperbidButton";
+import SuperbidInput from "@/components/ui/SuperbidInput";
 import Header from "@/components/layout/Header";
 import Sidebar from "@/components/layout/Sidebar";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import SuperbidButton from "@/components/ui/SuperbidButton";
-import { useToast } from "@/hooks/use-toast";
-import { Input } from "@/components/ui/input";
 
 const Integrations = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const { toast } = useToast();
-  const [activeIntegration, setActiveIntegration] = useState<string | null>(null);
-  const [webhookUrl, setWebhookUrl] = useState("");
-  const [slackToken, setSlackToken] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
+  const [isApiKeyRevealed, setIsApiKeyRevealed] = useState(false);
+  const [apiKey] = useState("sk-1234567890abcdefghijklmnopqrstu");
   
-  const toggleSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen);
-  };
-
-  const handleGenerateApiKey = (integration: string) => {
-    const apiKey = `sk-${Math.random().toString(36).substring(2, 15)}${Math.random().toString(36).substring(2, 15)}`;
-    setActiveIntegration(integration);
-    toast({
-      title: "API Key Generated",
-      description: `Your ${integration} API key has been generated. Keep it safe!`,
-    });
-    
-    // In a real application, you would store this API key securely
-    console.log(`Generated API Key for ${integration}:`, apiKey);
-  };
-
-  const handleConnect = (integration: string) => {
-    toast({
-      title: "Connection Initiated",
-      description: `Connecting to ${integration}...`,
-    });
-    
-    // In a real application, you would handle the connection process here
-    setTimeout(() => {
-      setActiveIntegration(integration);
-      toast({
-        title: "Connection Successful",
-        description: `Successfully connected to ${integration}!`,
-      });
-    }, 1500);
-  };
-
   return (
     <div className="min-h-screen bg-background">
-      <Header onMenuClick={toggleSidebar} />
+      <Header onMenuClick={() => setIsSidebarOpen(!isSidebarOpen)} />
       <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
-
+      
       <div className="pt-20 pb-16 md:pl-64">
         <div className="container mx-auto p-6">
           <div className="mb-8">
             <h1 className="text-3xl font-bold mb-2">Integrações</h1>
             <p className="text-muted-foreground">
-              Conecte seus agentes de IA com outras plataformas
+              Integre seus agentes com serviços externos e APIs
             </p>
           </div>
-
-          <Tabs defaultValue="api" className="space-y-6">
-            <TabsList className="grid grid-cols-3 w-full md:w-[400px]">
+          
+          <Tabs defaultValue="api" className="w-full">
+            <TabsList className="grid w-full grid-cols-3 mb-8">
               <TabsTrigger value="api">API</TabsTrigger>
               <TabsTrigger value="chat">Chat</TabsTrigger>
               <TabsTrigger value="webhooks">Webhooks</TabsTrigger>
             </TabsList>
             
             <TabsContent value="api" className="space-y-6">
-              <Card className="animate-fade-in">
+              <Card>
                 <CardHeader>
-                  <CardTitle>API de Acesso</CardTitle>
+                  <CardTitle className="flex items-center gap-2">
+                    <Globe className="h-5 w-5" />
+                    API Access
+                  </CardTitle>
                   <CardDescription>
-                    Gere chaves de API para acessar seus agentes programaticamente
+                    Use these API credentials to access your agents from external applications
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                  <div className="bg-amber-50 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-800 p-4 rounded-md mb-4">
-                    <p className="text-sm">
-                      As chaves de API permitem que você integre seus agentes em qualquer aplicação ou serviço.
-                      Mantenha suas chaves seguras e não as compartilhe publicamente.
-                    </p>
-                  </div>
-                  
-                  <div className="grid gap-4">
-                    {activeIntegration === "api" ? (
-                      <div className="space-y-4">
-                        <div className="flex flex-col space-y-2">
-                          <label className="text-sm font-medium">Sua chave de API</label>
-                          <div className="flex gap-2">
-                            <Input 
-                              type="text" 
-                              value="sk-••••••••••••••••••••••••••••••" 
-                              disabled 
-                              className="font-mono"
-                            />
-                            <SuperbidButton variant="outline" onClick={() => {
-                              toast({
-                                title: "Copiado!",
-                                description: "Chave de API copiada para a área de transferência."
-                              });
-                            }}>
-                              Copiar
-                            </SuperbidButton>
-                          </div>
+                  <div className="glass-card bg-opacity-50 dark:bg-opacity-20 p-4">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                      <div>
+                        <h3 className="font-medium mb-1">API Key</h3>
+                        <div className="flex items-center space-x-2">
+                          <code className="bg-muted p-1 rounded text-sm">
+                            {isApiKeyRevealed ? apiKey : "••••••••••••••••••••••••••••••••"}
+                          </code>
                         </div>
+                      </div>
+                      <div className="flex flex-col sm:flex-row gap-2">
                         <SuperbidButton 
-                          variant="destructive" 
-                          onClick={() => setActiveIntegration(null)}
+                          variant="outline" 
+                          size="sm"
+                          onClick={() => setIsApiKeyRevealed(!isApiKeyRevealed)}
                         >
-                          Revogar Chave de API
+                          {isApiKeyRevealed ? "Hide" : "Reveal"}
+                        </SuperbidButton>
+                        <SuperbidButton 
+                          variant="outline" 
+                          size="sm"
+                          onClick={() => navigator.clipboard.writeText(apiKey)}
+                        >
+                          Copy
+                        </SuperbidButton>
+                        <SuperbidButton 
+                          variant="primary"
+                          size="sm"
+                        >
+                          Regenerate
                         </SuperbidButton>
                       </div>
-                    ) : (
-                      <SuperbidButton 
-                        onClick={() => handleGenerateApiKey("api")}
-                      >
-                        Gerar Nova Chave de API
-                      </SuperbidButton>
-                    )}
+                    </div>
+                  </div>
+                  
+                  <div className="space-y-4 mt-6">
+                    <h3 className="font-medium">API Documentation</h3>
+                    <p className="text-sm text-muted-foreground">
+                      Learn how to integrate with our API to access your agents and knowledge bases
+                    </p>
+                    <SuperbidButton
+                      variant="outline"
+                      className="flex items-center gap-2"
+                    >
+                      <span>View Documentation</span>
+                      <ExternalLink size={16} />
+                    </SuperbidButton>
                   </div>
                 </CardContent>
               </Card>
               
-              <div className="grid md:grid-cols-2 gap-6">
-                <Card>
-                  <CardHeader>
-                    <div className="flex items-center space-x-2">
-                      <MessageSquare className="h-5 w-5 text-primary" />
-                      <CardTitle>Documentação da API</CardTitle>
+              <Card>
+                <CardHeader>
+                  <CardTitle>Example Code</CardTitle>
+                  <CardDescription>Use these examples to get started with our API</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <Collapsible className="space-y-2">
+                    <div className="flex items-center justify-between">
+                      <h3 className="text-sm font-medium">JavaScript Example</h3>
+                      <CollapsibleTrigger asChild>
+                        <SuperbidButton variant="ghost" size="sm">
+                          <ChevronRight className="h-4 w-4" />
+                          <span className="sr-only">Toggle</span>
+                        </SuperbidButton>
+                      </CollapsibleTrigger>
                     </div>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-muted-foreground mb-4">
-                      Consulte nossa documentação completa para entender como utilizar a API.
-                    </p>
-                    <SuperbidButton variant="outline" className="w-full">
-                      Ver Documentação
-                    </SuperbidButton>
-                  </CardContent>
-                </Card>
-                
-                <Card>
-                  <CardHeader>
-                    <div className="flex items-center space-x-2">
-                      <Link className="h-5 w-5 text-primary" />
-                      <CardTitle>Exemplos de Código</CardTitle>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-muted-foreground mb-4">
-                      Veja exemplos de como implementar a API em diferentes linguagens.
-                    </p>
-                    <SuperbidButton variant="outline" className="w-full">
-                      Ver Exemplos
-                    </SuperbidButton>
-                  </CardContent>
-                </Card>
-              </div>
+                    <CollapsibleContent className="space-y-2">
+                      <div className="rounded-md bg-muted p-4">
+                        <pre className="text-sm">
+                          {`
+const fetchAgentResponse = async (message) => {
+  const response = await fetch('https://api.superbid.ai/v1/chat', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ${apiKey}'
+    },
+    body: JSON.stringify({
+      agent_id: 'agent_123',
+      message: message
+    })
+  });
+  
+  return await response.json();
+};
+                          `}
+                        </pre>
+                      </div>
+                    </CollapsibleContent>
+                  </Collapsible>
+                </CardContent>
+              </Card>
             </TabsContent>
             
             <TabsContent value="chat" className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-6">
-                <Card>
-                  <CardHeader>
-                    <div className="flex items-center space-x-2">
-                      <WhatsApp className="h-5 w-5 text-green-500" />
-                      <CardTitle>WhatsApp</CardTitle>
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <MessageSquare className="h-5 w-5" />
+                    Chat Integrations
+                  </CardTitle>
+                  <CardDescription>
+                    Connect your agents to messaging platforms
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between p-4 border rounded-lg">
+                      <div className="flex items-center gap-3">
+                        <div className="p-2 rounded-md bg-green-100 dark:bg-green-900">
+                          <MessageSquare className="h-5 w-5 text-green-600 dark:text-green-400" />
+                        </div>
+                        <div>
+                          <h3 className="font-medium">WhatsApp</h3>
+                          <p className="text-sm text-muted-foreground">Connect your agent to WhatsApp</p>
+                        </div>
+                      </div>
+                      <SuperbidButton
+                        variant="outline"
+                        size="sm"
+                      >
+                        Configure
+                      </SuperbidButton>
                     </div>
-                    <CardDescription>
-                      Conecte seus agentes ao WhatsApp
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent className="space-y-4">
-                    {activeIntegration === "whatsapp" ? (
-                      <div className="space-y-4">
-                        <div className="p-3 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-md">
-                          <p className="text-sm">Conectado ao WhatsApp</p>
+                    
+                    <div className="flex items-center justify-between p-4 border rounded-lg">
+                      <div className="flex items-center gap-3">
+                        <div className="p-2 rounded-md bg-purple-100 dark:bg-purple-900">
+                          <Slack className="h-5 w-5 text-purple-600 dark:text-purple-400" />
                         </div>
-                        <div className="space-y-2">
-                          <label className="text-sm font-medium">Número de telefone</label>
-                          <Input 
-                            value={phoneNumber} 
-                            onChange={(e) => setPhoneNumber(e.target.value)} 
-                            placeholder="+55 (11) 99999-9999"
-                          />
+                        <div>
+                          <h3 className="font-medium">Slack</h3>
+                          <p className="text-sm text-muted-foreground">Connect your agent to Slack</p>
                         </div>
-                        <SuperbidButton 
-                          variant="outline" 
-                          className="w-full"
-                          onClick={() => {
-                            toast({
-                              title: "Configurações atualizadas",
-                              description: "As configurações do WhatsApp foram atualizadas."
-                            });
-                          }}
-                        >
-                          Atualizar Configurações
-                        </SuperbidButton>
-                        <SuperbidButton 
-                          variant="destructive" 
-                          className="w-full"
-                          onClick={() => setActiveIntegration(null)}
-                        >
-                          Desconectar
-                        </SuperbidButton>
                       </div>
-                    ) : (
-                      <div className="space-y-4">
-                        <p className="text-sm text-muted-foreground">
-                          Integre seus agentes de IA com o WhatsApp para oferecer suporte via mensagens.
-                        </p>
-                        <SuperbidButton 
-                          className="w-full"
-                          onClick={() => handleConnect("whatsapp")}
-                        >
-                          Conectar WhatsApp
-                        </SuperbidButton>
-                      </div>
-                    )}
-                  </CardContent>
-                </Card>
-                
-                <Card>
-                  <CardHeader>
-                    <div className="flex items-center space-x-2">
-                      <Slack className="h-5 w-5 text-purple-500" />
-                      <CardTitle>Slack</CardTitle>
+                      <SuperbidButton
+                        variant="outline"
+                        size="sm"
+                      >
+                        Configure
+                      </SuperbidButton>
                     </div>
-                    <CardDescription>
-                      Conecte seus agentes ao Slack
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent className="space-y-4">
-                    {activeIntegration === "slack" ? (
-                      <div className="space-y-4">
-                        <div className="p-3 bg-purple-50 dark:bg-purple-900/20 border border-purple-200 dark:border-purple-800 rounded-md">
-                          <p className="text-sm">Conectado ao Slack</p>
-                        </div>
-                        <div className="space-y-2">
-                          <label className="text-sm font-medium">Token da API</label>
-                          <Input 
-                            type="password"
-                            value={slackToken} 
-                            onChange={(e) => setSlackToken(e.target.value)} 
-                            placeholder="xoxb-..."
-                          />
-                        </div>
-                        <SuperbidButton 
-                          variant="outline" 
-                          className="w-full"
-                          onClick={() => {
-                            toast({
-                              title: "Configurações atualizadas",
-                              description: "As configurações do Slack foram atualizadas."
-                            });
-                          }}
-                        >
-                          Atualizar Configurações
-                        </SuperbidButton>
-                        <SuperbidButton 
-                          variant="destructive" 
-                          className="w-full"
-                          onClick={() => setActiveIntegration(null)}
-                        >
-                          Desconectar
-                        </SuperbidButton>
-                      </div>
-                    ) : (
-                      <div className="space-y-4">
-                        <p className="text-sm text-muted-foreground">
-                          Integre seus agentes de IA com o Slack para oferecer suporte via mensagens.
-                        </p>
-                        <SuperbidButton 
-                          className="w-full"
-                          onClick={() => handleConnect("slack")}
-                        >
-                          Conectar Slack
-                        </SuperbidButton>
-                      </div>
-                    )}
-                  </CardContent>
-                </Card>
-              </div>
+                    
+                    <p className="text-sm text-muted-foreground mt-4">
+                      More integrations coming soon. Contact us if you have specific requirements.
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
             </TabsContent>
             
             <TabsContent value="webhooks" className="space-y-6">
-              <Card className="animate-fade-in">
+              <Card>
                 <CardHeader>
-                  <CardTitle>Webhooks</CardTitle>
+                  <CardTitle className="flex items-center gap-2">
+                    <Webhook className="h-5 w-5" />
+                    Webhooks
+                  </CardTitle>
                   <CardDescription>
-                    Configure webhooks para receber notificações de eventos
+                    Set up webhooks to receive notifications when certain events occur
                   </CardDescription>
                 </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="bg-amber-50 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-800 p-4 rounded-md mb-4">
-                    <p className="text-sm">
-                      Os webhooks permitem que sua aplicação receba notificações em tempo real
-                      quando certos eventos ocorrem na plataforma Superbid AI.
-                    </p>
-                  </div>
-                  
+                <CardContent>
                   <div className="space-y-4">
-                    <div className="space-y-2">
-                      <label className="text-sm font-medium">URL do Webhook</label>
-                      <Input 
-                        type="url" 
-                        value={webhookUrl} 
-                        onChange={(e) => setWebhookUrl(e.target.value)} 
-                        placeholder="https://sua-aplicacao.com/webhook"
-                      />
+                    <div className="flex items-center justify-between">
+                      <h3 className="font-medium">Active Webhooks</h3>
+                      <SuperbidButton
+                        variant="outline"
+                        size="sm"
+                        icon={<PlusCircle size={16} />}
+                      >
+                        Add Webhook
+                      </SuperbidButton>
                     </div>
                     
-                    <div className="space-y-2">
-                      <label className="text-sm font-medium">Eventos</label>
-                      <div className="grid gap-2">
-                        <div className="flex items-center space-x-2">
-                          <input type="checkbox" id="agent-interaction" className="rounded border-gray-300" />
-                          <label htmlFor="agent-interaction" className="text-sm">Interações com Agentes</label>
+                    <div className="glass-card p-4 space-y-4">
+                      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b">
+                        <div>
+                          <h4 className="font-medium">Chat Completed</h4>
+                          <p className="text-sm text-muted-foreground">https://example.com/webhooks/chat</p>
                         </div>
-                        <div className="flex items-center space-x-2">
-                          <input type="checkbox" id="kb-update" className="rounded border-gray-300" />
-                          <label htmlFor="kb-update" className="text-sm">Atualizações na Base de Conhecimento</label>
+                        <div className="flex items-center gap-2">
+                          <span className="px-2 py-1 text-xs rounded-full bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-400">Active</span>
+                          <SuperbidButton
+                            variant="outline"
+                            size="sm"
+                          >
+                            <Trash2 size={16} />
+                          </SuperbidButton>
                         </div>
-                        <div className="flex items-center space-x-2">
-                          <input type="checkbox" id="agent-creation" className="rounded border-gray-300" />
-                          <label htmlFor="agent-creation" className="text-sm">Criação/Modificação de Agentes</label>
+                      </div>
+                      
+                      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                        <div>
+                          <h4 className="font-medium">Agent Created</h4>
+                          <p className="text-sm text-muted-foreground">https://example.com/webhooks/agent</p>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <span className="px-2 py-1 text-xs rounded-full bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-400">Active</span>
+                          <SuperbidButton
+                            variant="outline"
+                            size="sm"
+                          >
+                            <Trash2 size={16} />
+                          </SuperbidButton>
                         </div>
                       </div>
                     </div>
                     
-                    <SuperbidButton 
-                      className="w-full"
-                      onClick={() => {
-                        if (!webhookUrl) {
-                          toast({
-                            title: "Erro",
-                            description: "Por favor, insira uma URL válida para o webhook.",
-                            variant: "destructive"
-                          });
-                          return;
-                        }
-                        
-                        toast({
-                          title: "Webhook configurado",
-                          description: "Seu webhook foi configurado com sucesso!"
-                        });
-                      }}
-                    >
-                      Salvar Configurações
-                    </SuperbidButton>
+                    <div className="mt-4">
+                      <h3 className="font-medium mb-2">Add New Webhook</h3>
+                      <div className="space-y-4">
+                        <SuperbidInput
+                          label="Webhook URL"
+                          placeholder="https://example.com/webhook"
+                        />
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                          <SuperbidInput
+                            label="Secret Key (Optional)"
+                            placeholder="Webhook secret key"
+                          />
+                          <div className="space-y-2">
+                            <label className="block text-sm font-medium text-foreground">
+                              Event Type
+                            </label>
+                            <select className="w-full px-3 py-2 bg-background border rounded-md">
+                              <option value="chat_completed">Chat Completed</option>
+                              <option value="agent_created">Agent Created</option>
+                              <option value="knowledge_updated">Knowledge Base Updated</option>
+                            </select>
+                          </div>
+                        </div>
+                        <SuperbidButton
+                          variant="primary"
+                        >
+                          Add Webhook
+                        </SuperbidButton>
+                      </div>
+                    </div>
                   </div>
                 </CardContent>
               </Card>

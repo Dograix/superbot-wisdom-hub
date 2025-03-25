@@ -13,6 +13,7 @@ import Chat from "./pages/Chat";
 import KnowledgeBase from "./pages/KnowledgeBase";
 import Agents from "./pages/Agents";
 import Integrations from "./pages/Integrations";
+import Settings from "./pages/Settings";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
