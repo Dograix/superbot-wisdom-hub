@@ -1,6 +1,6 @@
 
 import { MessageSquare, Database, Bot } from "lucide-react";
-import { ReactNode } from "react";
+import React, { ReactNode } from "react";
 
 export type ModuleItem = {
   title: string;
