@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Moon, Sun, Menu } from "lucide-react";
+import { Moon, Sun, Menu, Globe } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import SuperbidButton from "../ui/SuperbidButton";
 import LanguageSwitcher from "../ui/LanguageSwitcher";

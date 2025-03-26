@@ -11,11 +11,15 @@ i18n
   .use(initReactI18next)
   .init({
     resources: {
-      en: enTranslations,
-      'pt-BR': ptBRTranslations
+      en: {
+        translation: enTranslations
+      },
+      'pt-BR': {
+        translation: ptBRTranslations
+      }
     },
     fallbackLng: 'en',
-    debug: false,
+    debug: process.env.NODE_ENV === 'development',
     interpolation: {
       escapeValue: false,
     },

@@ -1,5 +1,6 @@
 
 {
+  "language": "Language",
   "common": {
     "login": "Login",
     "register": "Register",
