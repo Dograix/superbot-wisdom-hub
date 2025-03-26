@@ -11,11 +11,13 @@ import SuperbidButton from "@/components/ui/SuperbidButton";
 import SuperbidInput from "@/components/ui/SuperbidInput";
 import Header from "@/components/layout/Header";
 import Sidebar from "@/components/layout/Sidebar";
+import { useTranslation } from "react-i18next";
 
 const Integrations = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isApiKeyRevealed, setIsApiKeyRevealed] = useState(false);
   const [apiKey] = useState("sk-1234567890abcdefghijklmnopqrstu");
+  const { t } = useTranslation();
   
   return (
     <div className="min-h-screen bg-background">
@@ -25,9 +27,9 @@ const Integrations = () => {
       <div className="pt-20 pb-16 md:pl-64">
         <div className="container mx-auto p-6">
           <div className="mb-8">
-            <h1 className="text-3xl font-bold mb-2">Integrações</h1>
+            <h1 className="text-3xl font-bold mb-2">{t('integrations.title')}</h1>
             <p className="text-muted-foreground">
-              Integre seus agentes com serviços externos e APIs
+              {t('integrations.subtitle')}
             </p>
           </div>
           
@@ -43,17 +45,17 @@ const Integrations = () => {
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <Globe className="h-5 w-5" />
-                    API Access
+                    {t('integrations.apiAccess')}
                   </CardTitle>
                   <CardDescription>
-                    Use these API credentials to access your agents from external applications
+                    {t('integrations.apiDesc')}
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="glass-card bg-opacity-50 dark:bg-opacity-20 p-4">
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                       <div>
-                        <h3 className="font-medium mb-1">API Key</h3>
+                        <h3 className="font-medium mb-1">{t('integrations.apiKey')}</h3>
                         <div className="flex items-center space-x-2">
                           <code className="bg-muted p-1 rounded text-sm">
                             {isApiKeyRevealed ? apiKey : "••••••••••••••••••••••••••••••••"}
@@ -66,35 +68,35 @@ const Integrations = () => {
                           size="sm"
                           onClick={() => setIsApiKeyRevealed(!isApiKeyRevealed)}
                         >
-                          {isApiKeyRevealed ? "Hide" : "Reveal"}
+                          {isApiKeyRevealed ? t('integrations.hide') : t('integrations.reveal')}
                         </SuperbidButton>
                         <SuperbidButton 
                           variant="outline" 
                           size="sm"
                           onClick={() => navigator.clipboard.writeText(apiKey)}
                         >
-                          Copy
+                          {t('integrations.copy')}
                         </SuperbidButton>
                         <SuperbidButton 
                           variant="primary"
                           size="sm"
                         >
-                          Regenerate
+                          {t('integrations.regenerate')}
                         </SuperbidButton>
                       </div>
                     </div>
                   </div>
                   
                   <div className="space-y-4 mt-6">
-                    <h3 className="font-medium">API Documentation</h3>
+                    <h3 className="font-medium">{t('integrations.apiDocs')}</h3>
                     <p className="text-sm text-muted-foreground">
-                      Learn how to integrate with our API to access your agents and knowledge bases
+                      {t('integrations.apiDocsDesc')}
                     </p>
                     <SuperbidButton
                       variant="outline"
                       className="flex items-center gap-2"
                     >
-                      <span>View Documentation</span>
+                      <span>{t('integrations.viewDocs')}</span>
                       <ExternalLink size={16} />
                     </SuperbidButton>
                   </div>
@@ -103,13 +105,13 @@ const Integrations = () => {
               
               <Card>
                 <CardHeader>
-                  <CardTitle>Example Code</CardTitle>
-                  <CardDescription>Use these examples to get started with our API</CardDescription>
+                  <CardTitle>{t('integrations.exampleCode')}</CardTitle>
+                  <CardDescription>{t('integrations.exampleCodeDesc')}</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <Collapsible className="space-y-2">
                     <div className="flex items-center justify-between">
-                      <h3 className="text-sm font-medium">JavaScript Example</h3>
+                      <h3 className="text-sm font-medium">{t('integrations.jsExample')}</h3>
                       <CollapsibleTrigger asChild>
                         <SuperbidButton variant="ghost" size="sm">
                           <ChevronRight className="h-4 w-4" />
@@ -150,10 +152,10 @@ const fetchAgentResponse = async (message) => {
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <MessageSquare className="h-5 w-5" />
-                    Chat Integrations
+                    {t('integrations.chatIntegrations')}
                   </CardTitle>
                   <CardDescription>
-                    Connect your agents to messaging platforms
+                    {t('integrations.chatDesc')}
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -164,15 +166,15 @@ const fetchAgentResponse = async (message) => {
                           <MessageSquare className="h-5 w-5 text-green-600 dark:text-green-400" />
                         </div>
                         <div>
-                          <h3 className="font-medium">WhatsApp</h3>
-                          <p className="text-sm text-muted-foreground">Connect your agent to WhatsApp</p>
+                          <h3 className="font-medium">{t('integrations.whatsapp')}</h3>
+                          <p className="text-sm text-muted-foreground">{t('integrations.whatsappDesc')}</p>
                         </div>
                       </div>
                       <SuperbidButton
                         variant="outline"
                         size="sm"
                       >
-                        Configure
+                        {t('integrations.configure')}
                       </SuperbidButton>
                     </div>
                     
@@ -182,20 +184,20 @@ const fetchAgentResponse = async (message) => {
                           <Slack className="h-5 w-5 text-purple-600 dark:text-purple-400" />
                         </div>
                         <div>
-                          <h3 className="font-medium">Slack</h3>
-                          <p className="text-sm text-muted-foreground">Connect your agent to Slack</p>
+                          <h3 className="font-medium">{t('integrations.slack')}</h3>
+                          <p className="text-sm text-muted-foreground">{t('integrations.slackDesc')}</p>
                         </div>
                       </div>
                       <SuperbidButton
                         variant="outline"
                         size="sm"
                       >
-                        Configure
+                        {t('integrations.configure')}
                       </SuperbidButton>
                     </div>
                     
                     <p className="text-sm text-muted-foreground mt-4">
-                      More integrations coming soon. Contact us if you have specific requirements.
+                      {t('integrations.moreComingSoon')}
                     </p>
                   </div>
                 </CardContent>
@@ -207,33 +209,33 @@ const fetchAgentResponse = async (message) => {
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <Webhook className="h-5 w-5" />
-                    Webhooks
+                    {t('integrations.webhooks')}
                   </CardTitle>
                   <CardDescription>
-                    Set up webhooks to receive notifications when certain events occur
+                    {t('integrations.webhooksDesc')}
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
                     <div className="flex items-center justify-between">
-                      <h3 className="font-medium">Active Webhooks</h3>
+                      <h3 className="font-medium">{t('integrations.activeWebhooks')}</h3>
                       <SuperbidButton
                         variant="outline"
                         size="sm"
                         icon={<PlusCircle size={16} />}
                       >
-                        Add Webhook
+                        {t('integrations.addWebhook')}
                       </SuperbidButton>
                     </div>
                     
                     <div className="glass-card p-4 space-y-4">
                       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b">
                         <div>
-                          <h4 className="font-medium">Chat Completed</h4>
+                          <h4 className="font-medium">{t('integrations.chatCompleted')}</h4>
                           <p className="text-sm text-muted-foreground">https://example.com/webhooks/chat</p>
                         </div>
                         <div className="flex items-center gap-2">
-                          <span className="px-2 py-1 text-xs rounded-full bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-400">Active</span>
+                          <span className="px-2 py-1 text-xs rounded-full bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-400">{t('integrations.active')}</span>
                           <SuperbidButton
                             variant="outline"
                             size="sm"
@@ -245,11 +247,11 @@ const fetchAgentResponse = async (message) => {
                       
                       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                         <div>
-                          <h4 className="font-medium">Agent Created</h4>
+                          <h4 className="font-medium">{t('integrations.agentCreated')}</h4>
                           <p className="text-sm text-muted-foreground">https://example.com/webhooks/agent</p>
                         </div>
                         <div className="flex items-center gap-2">
-                          <span className="px-2 py-1 text-xs rounded-full bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-400">Active</span>
+                          <span className="px-2 py-1 text-xs rounded-full bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-400">{t('integrations.active')}</span>
                           <SuperbidButton
                             variant="outline"
                             size="sm"
@@ -261,32 +263,32 @@ const fetchAgentResponse = async (message) => {
                     </div>
                     
                     <div className="mt-4">
-                      <h3 className="font-medium mb-2">Add New Webhook</h3>
+                      <h3 className="font-medium mb-2">{t('integrations.addNewWebhook')}</h3>
                       <div className="space-y-4">
                         <SuperbidInput
-                          label="Webhook URL"
+                          label={t('integrations.webhookUrl')}
                           placeholder="https://example.com/webhook"
                         />
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                           <SuperbidInput
-                            label="Secret Key (Optional)"
+                            label={t('integrations.secretKey')}
                             placeholder="Webhook secret key"
                           />
                           <div className="space-y-2">
                             <label className="block text-sm font-medium text-foreground">
-                              Event Type
+                              {t('integrations.eventType')}
                             </label>
                             <select className="w-full px-3 py-2 bg-background border rounded-md">
-                              <option value="chat_completed">Chat Completed</option>
-                              <option value="agent_created">Agent Created</option>
-                              <option value="knowledge_updated">Knowledge Base Updated</option>
+                              <option value="chat_completed">{t('integrations.chatCompleted')}</option>
+                              <option value="agent_created">{t('integrations.agentCreated')}</option>
+                              <option value="knowledge_updated">{t('knowledgeBase.title')} Updated</option>
                             </select>
                           </div>
                         </div>
                         <SuperbidButton
                           variant="primary"
                         >
-                          Add Webhook
+                          {t('integrations.addWebhook')}
                         </SuperbidButton>
                       </div>
                     </div>

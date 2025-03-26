@@ -6,18 +6,20 @@ import ChatInterface from "@/components/chat/ChatInterface";
 import { Bot } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import SuperbidButton from "@/components/ui/SuperbidButton";
+import { useTranslation } from "react-i18next";
 
 const Chat = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const { t } = useTranslation();
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
   const agents = [
-    { id: 1, name: "General Assistant", description: "All-purpose AI assistant", icon: <Bot size={20} /> },
-    { id: 2, name: "Customer Support", description: "Specialized in support queries", icon: <Bot size={20} /> },
-    { id: 3, name: "Sales Specialist", description: "Product and sales focused", icon: <Bot size={20} /> },
+    { id: 1, name: t('chat.generalAssistant'), description: t('chat.generalAssistantDesc'), icon: <Bot size={20} /> },
+    { id: 2, name: t('chat.customerSupport'), description: t('chat.customerSupportDesc'), icon: <Bot size={20} /> },
+    { id: 3, name: t('chat.salesSpecialist'), description: t('chat.salesSpecialistDesc'), icon: <Bot size={20} /> },
   ];
 
   return (
@@ -31,7 +33,7 @@ const Chat = () => {
             {/* Sidebar with agents list */}
             <div className="lg:col-span-1">
               <div className="sticky top-24">
-                <h2 className="text-xl font-bold mb-4">AI Agents</h2>
+                <h2 className="text-xl font-bold mb-4">{t('chat.title')}</h2>
                 <div className="space-y-3 mb-6">
                   {agents.map((agent) => (
                     <Card 
@@ -60,7 +62,7 @@ const Chat = () => {
                 </div>
                 
                 <SuperbidButton variant="outline" fullWidth>
-                  <Bot size={16} className="mr-2" /> Create New Agent
+                  <Bot size={16} className="mr-2" /> {t('chat.newAgent')}
                 </SuperbidButton>
               </div>
             </div>

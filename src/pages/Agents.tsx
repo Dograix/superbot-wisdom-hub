@@ -8,9 +8,11 @@ import SuperbidInput from "@/components/ui/SuperbidInput";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { Badge } from "@/components/ui/badge";
+import { useTranslation } from "react-i18next";
 
 const Agents = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const { t } = useTranslation();
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -19,27 +21,27 @@ const Agents = () => {
   const agents = [
     {
       id: 1,
-      name: "General Assistant",
-      description: "All-purpose AI assistant for general tasks",
+      name: t('agents.generalAssistant'),
+      description: t('agents.generalAssistantDesc'),
       status: "active",
-      knowledgeBases: ["Product Documentation"],
-      usage: "42 chats this month",
+      knowledgeBases: [t('knowledgeBase.productDocs')],
+      usage: `42 ${t('agents.chatsThisMonth')}`,
     },
     {
       id: 2,
-      name: "Customer Support",
-      description: "Specialized agent for handling customer inquiries",
+      name: t('agents.customerSupport'),
+      description: t('agents.customerSupportDesc'),
       status: "active",
-      knowledgeBases: ["Customer Support FAQ", "Product Documentation"],
-      usage: "128 chats this month",
+      knowledgeBases: [t('knowledgeBase.customerFaq'), t('knowledgeBase.productDocs')],
+      usage: `128 ${t('agents.chatsThisMonth')}`,
     },
     {
       id: 3,
-      name: "Sales Specialist",
-      description: "Product and sales focused agent",
+      name: t('agents.salesSpecialist'),
+      description: t('agents.salesSpecialistDesc'),
       status: "inactive",
-      knowledgeBases: ["Product Documentation"],
-      usage: "5 chats this month",
+      knowledgeBases: [t('knowledgeBase.productDocs')],
+      usage: `5 ${t('agents.chatsThisMonth')}`,
     },
   ];
 
@@ -52,19 +54,19 @@ const Agents = () => {
         <div className="container mx-auto p-6">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
             <div>
-              <h1 className="text-3xl font-bold mb-2">AI Agents</h1>
+              <h1 className="text-3xl font-bold mb-2">{t('agents.title')}</h1>
               <p className="text-muted-foreground">
-                Create and manage your custom AI agents
+                {t('agents.subtitle')}
               </p>
             </div>
             <SuperbidButton variant="primary">
-              <Plus size={16} className="mr-2" /> Create Agent
+              <Plus size={16} className="mr-2" /> {t('agents.createNew')}
             </SuperbidButton>
           </div>
 
           <div className="mb-8">
             <SuperbidInput
-              placeholder="Search agents..."
+              placeholder={t('agents.search')}
               icon={<Search size={18} />}
               className="max-w-md"
             />
@@ -82,7 +84,7 @@ const Agents = () => {
                       <div>
                         <CardTitle>{agent.name}</CardTitle>
                         <Badge variant={agent.status === "active" ? "default" : "secondary"} className="mt-1">
-                          {agent.status === "active" ? "Active" : "Inactive"}
+                          {agent.status === "active" ? t('agents.active') : t('agents.inactive')}
                         </Badge>
                       </div>
                     </div>
@@ -93,20 +95,20 @@ const Agents = () => {
                         </button>
                       </DropdownMenuTrigger>
                       <DropdownMenuContent align="end">
-                        <DropdownMenuLabel>Actions</DropdownMenuLabel>
+                        <DropdownMenuLabel>{t('agents.actions')}</DropdownMenuLabel>
                         <DropdownMenuSeparator />
                         <DropdownMenuItem>
-                          <Edit size={16} className="mr-2" /> Edit Agent
+                          <Edit size={16} className="mr-2" /> {t('agents.editAgent')}
                         </DropdownMenuItem>
                         <DropdownMenuItem>
-                          <Play size={16} className="mr-2" /> Test Agent
+                          <Play size={16} className="mr-2" /> {t('agents.testAgent')}
                         </DropdownMenuItem>
                         <DropdownMenuItem>
-                          <MessageSquare size={16} className="mr-2" /> Start Chat
+                          <MessageSquare size={16} className="mr-2" /> {t('agents.startChat')}
                         </DropdownMenuItem>
                         <DropdownMenuSeparator />
                         <DropdownMenuItem className="text-red-500">
-                          <Trash size={16} className="mr-2" /> Delete
+                          <Trash size={16} className="mr-2" /> {t('knowledgeBase.delete')}
                         </DropdownMenuItem>
                       </DropdownMenuContent>
                     </DropdownMenu>
@@ -120,7 +122,7 @@ const Agents = () => {
                     <div className="flex gap-2 text-sm">
                       <Database size={14} className="mt-0.5 text-muted-foreground" />
                       <div>
-                        <p className="font-medium">Knowledge Bases:</p>
+                        <p className="font-medium">{t('agents.knowledgeBases')}</p>
                         <p className="text-muted-foreground">{agent.knowledgeBases.join(", ")}</p>
                       </div>
                     </div>
@@ -132,10 +134,10 @@ const Agents = () => {
                 </CardContent>
                 <CardFooter className="flex gap-2">
                   <SuperbidButton variant="outline" className="flex-1">
-                    <Edit size={14} className="mr-1" /> Edit
+                    <Edit size={14} className="mr-1" /> {t('agents.edit')}
                   </SuperbidButton>
                   <SuperbidButton variant="primary" className="flex-1">
-                    <MessageSquare size={14} className="mr-1" /> Chat
+                    <MessageSquare size={14} className="mr-1" /> {t('agents.chat')}
                   </SuperbidButton>
                 </CardFooter>
               </Card>
@@ -146,12 +148,12 @@ const Agents = () => {
               <div className="p-4 rounded-full bg-secondary mb-4">
                 <Plus size={24} className="text-muted-foreground" />
               </div>
-              <h3 className="text-xl font-medium mb-2">Create Agent</h3>
+              <h3 className="text-xl font-medium mb-2">{t('agents.createNew')}</h3>
               <p className="text-center text-muted-foreground mb-4">
-                Build a new AI agent for your specific needs
+                {t('agents.buildAgent')}
               </p>
               <SuperbidButton variant="outline">
-                <Plus size={16} className="mr-2" /> Create New
+                <Plus size={16} className="mr-2" /> {t('knowledgeBase.createNew')}
               </SuperbidButton>
             </Card>
           </div>
@@ -159,9 +161,9 @@ const Agents = () => {
           <div className="mt-12">
             <Card>
               <CardHeader>
-                <CardTitle>Agent Performance</CardTitle>
+                <CardTitle>{t('agents.agentPerformance')}</CardTitle>
                 <CardDescription>
-                  Overview of your agents' usage and effectiveness
+                  {t('agents.performanceDesc')}
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -184,7 +186,7 @@ const Agents = () => {
                       </div>
                       <div className="text-right">
                         <p className="font-medium">{agent.id === 1 ? "42%" : "78%"}</p>
-                        <p className="text-xs text-muted-foreground">Success Rate</p>
+                        <p className="text-xs text-muted-foreground">{t('agents.successRate')}</p>
                       </div>
                     </div>
                   ))}

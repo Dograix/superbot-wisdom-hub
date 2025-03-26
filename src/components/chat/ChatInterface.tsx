@@ -3,6 +3,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { Send, Bot, User, Paperclip, Sparkles } from "lucide-react";
 import SuperbidButton from "../ui/SuperbidButton";
 import { cn } from "@/lib/utils";
+import { useTranslation } from "react-i18next";
 
 type Message = {
   id: string;
@@ -16,6 +17,7 @@ type ChatInterfaceProps = {
 };
 
 const ChatInterface: React.FC<ChatInterfaceProps> = ({ className }) => {
+  const { t } = useTranslation();
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "1",
@@ -87,13 +89,13 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ className }) => {
             <Bot size={18} className="text-primary" />
           </div>
           <div>
-            <h3 className="font-medium">Superbid AI Assistant</h3>
-            <p className="text-xs text-muted-foreground">General AI Agent</p>
+            <h3 className="font-medium">{t('chat.assistantTitle')}</h3>
+            <p className="text-xs text-muted-foreground">{t('chat.assistantDesc')}</p>
           </div>
         </div>
         <div>
           <SuperbidButton variant="outline" size="sm">
-            <Sparkles size={14} className="mr-1" /> New Chat
+            <Sparkles size={14} className="mr-1" /> {t('chat.newChat')}
           </SuperbidButton>
         </div>
       </div>
@@ -123,7 +125,7 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ className }) => {
                   <User size={16} />
                 )}
                 <span className="font-medium text-sm">
-                  {message.sender === "user" ? "You" : "Superbid AI"}
+                  {message.sender === "user" ? t('chat.you') : "Superbid AI"}
                 </span>
               </div>
               <p className="text-sm">{message.content}</p>
@@ -162,7 +164,7 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ className }) => {
             type="text"
             value={newMessage}
             onChange={(e) => setNewMessage(e.target.value)}
-            placeholder="Type a message..."
+            placeholder={t('chat.sendMessage')}
             className="flex-1 bg-secondary/50 border-0 rounded-full px-4 py-2 focus:ring-1 focus:ring-primary"
             onKeyDown={(e) => {
               if (e.key === "Enter" && !e.shiftKey) {

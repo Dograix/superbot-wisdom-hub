@@ -7,9 +7,11 @@ import SuperbidButton from "@/components/ui/SuperbidButton";
 import SuperbidInput from "@/components/ui/SuperbidInput";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import { useTranslation } from "react-i18next";
 
 const KnowledgeBase = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const { t } = useTranslation();
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -18,15 +20,15 @@ const KnowledgeBase = () => {
   const knowledgeBases = [
     {
       id: 1,
-      name: "Product Documentation",
-      description: "Contains all product documentation and guides",
+      name: t('knowledgeBase.productDocs'),
+      description: t('knowledgeBase.productDocsDesc'),
       documentCount: 35,
       lastUpdated: "2 days ago",
     },
     {
       id: 2,
-      name: "Customer Support FAQ",
-      description: "Frequently asked questions for customer support",
+      name: t('knowledgeBase.customerFaq'),
+      description: t('knowledgeBase.customerFaqDesc'),
       documentCount: 24,
       lastUpdated: "1 week ago",
     },
@@ -41,19 +43,19 @@ const KnowledgeBase = () => {
         <div className="container mx-auto p-6">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
             <div>
-              <h1 className="text-3xl font-bold mb-2">Knowledge Base</h1>
+              <h1 className="text-3xl font-bold mb-2">{t('knowledgeBase.title')}</h1>
               <p className="text-muted-foreground">
-                Manage your knowledge bases for AI agents
+                {t('knowledgeBase.subtitle')}
               </p>
             </div>
             <SuperbidButton variant="primary">
-              <Plus size={16} className="mr-2" /> Create Knowledge Base
+              <Plus size={16} className="mr-2" /> {t('knowledgeBase.createNew')}
             </SuperbidButton>
           </div>
 
           <div className="mb-8">
             <SuperbidInput
-              placeholder="Search knowledge bases..."
+              placeholder={t('knowledgeBase.search')}
               icon={<Search size={18} />}
               className="max-w-md"
             />
@@ -77,17 +79,17 @@ const KnowledgeBase = () => {
                         </button>
                       </DropdownMenuTrigger>
                       <DropdownMenuContent align="end">
-                        <DropdownMenuLabel>Actions</DropdownMenuLabel>
+                        <DropdownMenuLabel>{t('knowledgeBase.actions')}</DropdownMenuLabel>
                         <DropdownMenuSeparator />
                         <DropdownMenuItem>
-                          <Upload size={16} className="mr-2" /> Upload Documents
+                          <Upload size={16} className="mr-2" /> {t('knowledgeBase.uploadDocs')}
                         </DropdownMenuItem>
                         <DropdownMenuItem>
-                          <FileText size={16} className="mr-2" /> View All Documents
+                          <FileText size={16} className="mr-2" /> {t('knowledgeBase.viewDocs')}
                         </DropdownMenuItem>
                         <DropdownMenuSeparator />
                         <DropdownMenuItem className="text-red-500">
-                          <Trash size={16} className="mr-2" /> Delete
+                          <Trash size={16} className="mr-2" /> {t('knowledgeBase.delete')}
                         </DropdownMenuItem>
                       </DropdownMenuContent>
                     </DropdownMenu>
@@ -98,16 +100,16 @@ const KnowledgeBase = () => {
                   <div className="flex justify-between text-sm">
                     <span className="text-muted-foreground">
                       <File size={14} className="inline mr-1" />
-                      {kb.documentCount} documents
+                      {kb.documentCount} {t('knowledgeBase.documents')}
                     </span>
                     <span className="text-muted-foreground">
-                      Updated {kb.lastUpdated}
+                      {t('knowledgeBase.updated')} {kb.lastUpdated}
                     </span>
                   </div>
                 </CardContent>
                 <CardFooter>
                   <SuperbidButton variant="outline" fullWidth>
-                    Manage
+                    {t('knowledgeBase.manage')}
                   </SuperbidButton>
                 </CardFooter>
               </Card>
@@ -118,12 +120,12 @@ const KnowledgeBase = () => {
               <div className="p-4 rounded-full bg-secondary mb-4">
                 <Plus size={24} className="text-muted-foreground" />
               </div>
-              <h3 className="text-xl font-medium mb-2">Create New</h3>
+              <h3 className="text-xl font-medium mb-2">{t('knowledgeBase.createNew')}</h3>
               <p className="text-center text-muted-foreground mb-4">
-                Add another knowledge base for your agents
+                {t('knowledgeBase.addAnother')}
               </p>
               <SuperbidButton variant="outline">
-                <Plus size={16} className="mr-2" /> Create New
+                <Plus size={16} className="mr-2" /> {t('knowledgeBase.createNew')}
               </SuperbidButton>
             </Card>
           </div>
@@ -131,9 +133,9 @@ const KnowledgeBase = () => {
           <div className="mt-12">
             <Card>
               <CardHeader>
-                <CardTitle>Recent Updates</CardTitle>
+                <CardTitle>{t('knowledgeBase.recentUpdates')}</CardTitle>
                 <CardDescription>
-                  Recent activity in your knowledge bases
+                  {t('knowledgeBase.recentActivity')}
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -143,9 +145,9 @@ const KnowledgeBase = () => {
                       <FileText size={16} className="text-blue-500" />
                     </div>
                     <div>
-                      <p className="font-medium">New document added</p>
+                      <p className="font-medium">{t('knowledgeBase.newDocAdded')}</p>
                       <p className="text-sm text-muted-foreground">
-                        "Product User Guide v2.1" added to Product Documentation
+                        {t('knowledgeBase.docAddedDesc')}
                       </p>
                       <p className="text-xs text-muted-foreground mt-1">
                         Yesterday at 14:32
@@ -158,9 +160,9 @@ const KnowledgeBase = () => {
                       <Upload size={16} className="text-green-500" />
                     </div>
                     <div>
-                      <p className="font-medium">Bulk upload completed</p>
+                      <p className="font-medium">{t('knowledgeBase.bulkUpload')}</p>
                       <p className="text-sm text-muted-foreground">
-                        12 documents uploaded to Customer Support FAQ
+                        {t('knowledgeBase.bulkUploadDesc')}
                       </p>
                       <p className="text-xs text-muted-foreground mt-1">
                         3 days ago at 09:14
