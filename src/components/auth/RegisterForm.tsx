@@ -5,6 +5,7 @@ import { Mail, Lock, User, Eye, EyeOff } from "lucide-react";
 import SuperbidButton from "../ui/SuperbidButton";
 import SuperbidInput from "../ui/SuperbidInput";
 import { toast } from "sonner";
+import { useTranslation } from "react-i18next";
 
 const RegisterForm: React.FC = () => {
   const navigate = useNavigate();
@@ -15,6 +16,7 @@ const RegisterForm: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const { t } = useTranslation();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -51,16 +53,16 @@ const RegisterForm: React.FC = () => {
   return (
     <form onSubmit={handleSubmit} className="space-y-6 w-full max-w-md animate-fade-in">
       <div className="space-y-2 text-center">
-        <h1 className="text-2xl font-semibold">Create Account</h1>
+        <h1 className="text-2xl font-semibold">{t('register.title')}</h1>
         <p className="text-muted-foreground">
-          Enter your details to create your account
+          {t('register.subtitle')}
         </p>
       </div>
 
       <SuperbidInput
-        label="Full Name"
+        label={t('register.fullName')}
         type="text"
-        placeholder="Enter your full name"
+        placeholder={`${t('register.fullName')}...`}
         icon={<User size={18} />}
         value={name}
         onChange={(e) => setName(e.target.value)}
@@ -68,9 +70,9 @@ const RegisterForm: React.FC = () => {
       />
 
       <SuperbidInput
-        label="Email"
+        label={t('register.email')}
         type="email"
-        placeholder="Enter your email"
+        placeholder={`${t('register.email')}...`}
         icon={<Mail size={18} />}
         value={email}
         onChange={(e) => setEmail(e.target.value)}
@@ -78,9 +80,9 @@ const RegisterForm: React.FC = () => {
       />
 
       <SuperbidInput
-        label="Password"
+        label={t('register.password')}
         type={showPassword ? "text" : "password"}
-        placeholder="Create a password"
+        placeholder={`${t('register.password')}...`}
         icon={<Lock size={18} />}
         rightIcon={
           <button
@@ -97,9 +99,9 @@ const RegisterForm: React.FC = () => {
       />
 
       <SuperbidInput
-        label="Confirm Password"
+        label={t('register.confirmPassword')}
         type={showConfirmPassword ? "text" : "password"}
-        placeholder="Confirm your password"
+        placeholder={`${t('register.confirmPassword')}...`}
         icon={<Lock size={18} />}
         rightIcon={
           <button
@@ -123,13 +125,13 @@ const RegisterForm: React.FC = () => {
           required
         />
         <label htmlFor="terms" className="text-sm">
-          I agree to the{" "}
+          {t('register.termsAgreement')}{" "}
           <Link to="/terms" className="text-primary hover:underline">
-            Terms of Service
+            {t('register.termsOfService')}
           </Link>{" "}
-          and{" "}
+          {t('register.and')}{" "}
           <Link to="/privacy" className="text-primary hover:underline">
-            Privacy Policy
+            {t('register.privacyPolicy')}
           </Link>
         </label>
       </div>
@@ -141,14 +143,14 @@ const RegisterForm: React.FC = () => {
           fullWidth
           disabled={isLoading}
         >
-          {isLoading ? "Creating Account..." : "Create Account"}
+          {isLoading ? "Creating Account..." : t('register.createAccount')}
         </SuperbidButton>
       </div>
 
       <div className="text-center text-sm">
-        <span className="text-muted-foreground">Already have an account?</span>{" "}
+        <span className="text-muted-foreground">{t('register.alreadyHaveAccount')}</span>{" "}
         <Link to="/login" className="text-primary font-medium hover:underline">
-          Sign in
+          {t('register.signIn')}
         </Link>
       </div>
     </form>

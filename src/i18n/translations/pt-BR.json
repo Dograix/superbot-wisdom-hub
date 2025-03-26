@@ -15,11 +15,33 @@
   },
   "login": {
     "welcomeTitle": "Bem-vindo ao Jarvis AI",
-    "welcomeDescription": "A plataforma completa para construir, implantar e gerenciar agentes de IA com sua própria base de conhecimento."
+    "welcomeDescription": "A plataforma completa para construir, implantar e gerenciar agentes de IA com sua própria base de conhecimento.",
+    "title": "Entrar",
+    "subtitle": "Digite suas credenciais para acessar sua conta",
+    "email": "E-mail",
+    "password": "Senha",
+    "rememberMe": "Lembrar-me",
+    "forgotPassword": "Esqueceu a senha?",
+    "signIn": "Entrar",
+    "noAccount": "Não tem uma conta?",
+    "signUp": "Cadastre-se"
   },
   "register": {
     "joinTitle": "Junte-se à Revolução da IA",
-    "joinDescription": "Crie agentes de IA personalizados, construa bases de conhecimento e implante soluções inteligentes para seu negócio."
+    "joinDescription": "Crie agentes de IA personalizados, construa bases de conhecimento e implante soluções inteligentes para seu negócio.",
+    "title": "Criar Conta",
+    "subtitle": "Digite seus dados para criar sua conta",
+    "fullName": "Nome Completo",
+    "email": "E-mail",
+    "password": "Senha",
+    "confirmPassword": "Confirmar Senha",
+    "termsAgreement": "Eu concordo com os",
+    "termsOfService": "Termos de Serviço",
+    "and": "e",
+    "privacyPolicy": "Política de Privacidade",
+    "createAccount": "Criar Conta",
+    "alreadyHaveAccount": "Já tem uma conta?",
+    "signIn": "Entrar"
   },
   "dashboard": {
     "welcome": "Bem-vindo ao Jarvis AI",

@@ -15,11 +15,33 @@
   },
   "login": {
     "welcomeTitle": "Welcome to Jarvis AI",
-    "welcomeDescription": "The complete platform for building, deploying, and managing AI agents with your own knowledge base."
+    "welcomeDescription": "The complete platform for building, deploying, and managing AI agents with your own knowledge base.",
+    "title": "Sign In",
+    "subtitle": "Enter your credentials to access your account",
+    "email": "Email",
+    "password": "Password",
+    "rememberMe": "Remember me",
+    "forgotPassword": "Forgot password?",
+    "signIn": "Sign In",
+    "noAccount": "Don't have an account?",
+    "signUp": "Sign up"
   },
   "register": {
     "joinTitle": "Join the AI Revolution",
-    "joinDescription": "Create custom AI agents, build knowledge bases, and deploy intelligent solutions for your business."
+    "joinDescription": "Create custom AI agents, build knowledge bases, and deploy intelligent solutions for your business.",
+    "title": "Create Account",
+    "subtitle": "Enter your details to create your account",
+    "fullName": "Full Name",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "termsAgreement": "I agree to the",
+    "termsOfService": "Terms of Service",
+    "and": "and",
+    "privacyPolicy": "Privacy Policy",
+    "createAccount": "Create Account",
+    "alreadyHaveAccount": "Already have an account?",
+    "signIn": "Sign in"
   },
   "dashboard": {
     "welcome": "Welcome to Jarvis AI",
