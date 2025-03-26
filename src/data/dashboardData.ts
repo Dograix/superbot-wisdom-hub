@@ -1,7 +1,7 @@
 
 import React, { ReactNode } from "react";
 import { MessageSquare, Database, Bot } from "lucide-react";
-import { useTranslation } from "react-i18next";
+import i18next from "i18next";
 
 export type ModuleItem = {
   title: string;
@@ -39,8 +39,8 @@ export type GetStartedStep = {
 };
 
 export const getDashboardData = () => {
-  // We need to use i18next directly since hooks can't be used in a regular function
-  const { t } = require('react-i18next').useTranslation();
+  // Use i18next directly instead of useTranslation hook
+  const t = (key: string) => i18next.t(key);
 
   const modules: ModuleItem[] = [
     {
