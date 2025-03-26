@@ -72,6 +72,7 @@
     "subtitle": "Crie, personalize e implante poderosos agentes de IA com sua própria base de conhecimento em minutos.",
     "getStarted": "Começar Agora",
     "loginToDashboard": "Entrar no Painel",
+    "viewPricing": "Ver Preços",
     "dashboardPreview": "Prévia do Painel",
     "features": {
       "title": "Recursos Poderosos",
@@ -115,6 +116,72 @@
       "privacy": "Privacidade",
       "contact": "Contato",
       "copyright": "© 2024 Jarvis AI. Todos os direitos reservados."
+    }
+  },
+  "pricing": {
+    "title": "Preços Simples e Transparentes",
+    "subtitle": "Escolha o plano perfeito para as necessidades do seu negócio sem taxas ocultas.",
+    "monthly": "Mensal",
+    "annually": "Anual",
+    "discount": "16% de desconto",
+    "month": "mês",
+    "year": "ano",
+    "custom": "Preço personalizado",
+    "mostPopular": "Mais Popular",
+    "getStarted": "Começar Agora",
+    "contactUs": "Falar com Vendas",
+    "starter": {
+      "name": "Iniciante",
+      "description": "Perfeito para indivíduos e pequenos projetos",
+      "features": {
+        "requests": "5.000 requisições por mês",
+        "storage": "500MB de armazenamento",
+        "agents": "1 agente de IA"
+      }
+    },
+    "professional": {
+      "name": "Profissional",
+      "description": "Ideal para negócios em crescimento",
+      "features": {
+        "requests": "15.000 requisições por mês",
+        "storage": "2GB de armazenamento",
+        "agents": "5 agentes de IA"
+      }
+    },
+    "scale": {
+      "name": "Escala",
+      "description": "Para equipes com necessidades avançadas",
+      "features": {
+        "requests": "50.000 requisições por mês",
+        "storage": "5GB de armazenamento",
+        "agents": "20 agentes de IA"
+      }
+    },
+    "enterprise": {
+      "name": "Empresarial",
+      "description": "Soluções personalizadas para grandes organizações",
+      "features": {
+        "custom": "Volume personalizado de requisições",
+        "storage": "Armazenamento ilimitado",
+        "agents": "Agentes de IA ilimitados"
+      }
+    },
+    "features": {
+      "support": "Suporte por e-mail",
+      "api": "Acesso à API",
+      "priority": "Suporte prioritário",
+      "dedicated": "Gerente de conta dedicado"
+    },
+    "faq": {
+      "title": "Perguntas Frequentes",
+      "question1": "Posso fazer upgrade ou downgrade do meu plano?",
+      "answer1": "Sim, você pode fazer upgrade ou downgrade do seu plano a qualquer momento. As alterações entrarão em vigor imediatamente, com faturamento ajustado no próximo ciclo.",
+      "question2": "O que acontece se eu exceder minhas requisições mensais?",
+      "answer2": "Se você exceder seu limite mensal de requisições, poderá continuar usando o serviço com uma taxa pay-as-you-go ou fazer upgrade para um plano superior.",
+      "question3": "Existe um período de teste gratuito disponível?",
+      "answer3": "Sim, oferecemos um período de teste gratuito de 14 dias em todos os planos para que você possa testar os recursos antes de se comprometer.",
+      "question4": "Como cancelo minha assinatura?",
+      "answer4": "Você pode cancelar sua assinatura a qualquer momento nas configurações da sua conta. Seu acesso permanecerá até o final do seu período de faturamento atual."
     }
   },
   "chat": {

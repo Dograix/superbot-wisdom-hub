@@ -97,9 +97,9 @@ const Index = () => {
                   {t('index.getStarted')} <ArrowRight size={16} className="ml-2" />
                 </SuperbidButton>
               </Link>
-              <Link to="/login">
+              <Link to="/pricing">
                 <SuperbidButton variant="outline" size="lg">
-                  {t('index.loginToDashboard')}
+                  {t('index.viewPricing')}
                 </SuperbidButton>
               </Link>
             </motion.div>

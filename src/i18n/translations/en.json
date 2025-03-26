@@ -72,6 +72,7 @@
     "subtitle": "Create, customize, and deploy powerful AI agents with your own knowledge base in minutes.",
     "getStarted": "Get Started",
     "loginToDashboard": "Login to Dashboard",
+    "viewPricing": "View Pricing",
     "dashboardPreview": "Dashboard Preview",
     "features": {
       "title": "Powerful Features",
@@ -115,6 +116,72 @@
       "privacy": "Privacy",
       "contact": "Contact",
       "copyright": "© 2024 Jarvis AI. All rights reserved."
+    }
+  },
+  "pricing": {
+    "title": "Simple, Transparent Pricing",
+    "subtitle": "Choose the perfect plan for your business needs with no hidden fees.",
+    "monthly": "Monthly",
+    "annually": "Annually",
+    "discount": "16% off",
+    "month": "month",
+    "year": "year",
+    "custom": "Custom pricing",
+    "mostPopular": "Most Popular",
+    "getStarted": "Get Started",
+    "contactUs": "Contact Sales",
+    "starter": {
+      "name": "Starter",
+      "description": "Perfect for individuals and small projects",
+      "features": {
+        "requests": "5,000 requests per month",
+        "storage": "500MB storage",
+        "agents": "1 AI agent"
+      }
+    },
+    "professional": {
+      "name": "Professional",
+      "description": "Ideal for growing businesses",
+      "features": {
+        "requests": "15,000 requests per month",
+        "storage": "2GB storage",
+        "agents": "5 AI agents"
+      }
+    },
+    "scale": {
+      "name": "Scale",
+      "description": "For teams with advanced needs",
+      "features": {
+        "requests": "50,000 requests per month",
+        "storage": "5GB storage",
+        "agents": "20 AI agents"
+      }
+    },
+    "enterprise": {
+      "name": "Enterprise",
+      "description": "Custom solutions for large organizations",
+      "features": {
+        "custom": "Custom request volume",
+        "storage": "Unlimited storage",
+        "agents": "Unlimited AI agents"
+      }
+    },
+    "features": {
+      "support": "Email support",
+      "api": "API access",
+      "priority": "Priority support",
+      "dedicated": "Dedicated account manager"
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "question1": "Can I upgrade or downgrade my plan?",
+      "answer1": "Yes, you can upgrade or downgrade your plan at any time. Changes will be effective immediately, with adjusted billing on your next cycle.",
+      "question2": "What happens if I exceed my monthly requests?",
+      "answer2": "If you exceed your monthly request limit, you can continue using the service at a pay-as-you-go rate or upgrade to a higher plan.",
+      "question3": "Is there a free trial available?",
+      "answer3": "Yes, we offer a 14-day free trial on all plans so you can test the features before committing.",
+      "question4": "How do I cancel my subscription?",
+      "answer4": "You can cancel your subscription at any time from your account settings. Your access will remain until the end of your current billing period."
     }
   },
   "chat": {
