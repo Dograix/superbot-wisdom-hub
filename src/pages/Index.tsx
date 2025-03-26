@@ -5,8 +5,10 @@ import { ArrowRight, Bot, Database, Zap, MessageSquare, Brain, Shield } from "lu
 import SuperbidButton from "@/components/ui/SuperbidButton";
 import Header from "@/components/layout/Header";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 const Index = () => {
+  const { t } = useTranslation();
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -16,33 +18,33 @@ const Index = () => {
   const features = [
     {
       icon: <MessageSquare size={24} />,
-      title: "AI Chat Interface",
-      description: "Engage with sophisticated AI models through an intuitive chat interface."
+      title: t('index.features.items.chatInterface.title'),
+      description: t('index.features.items.chatInterface.description')
     },
     {
       icon: <Database size={24} />,
-      title: "Knowledge Base",
-      description: "Create and manage vector databases to power your AI with custom knowledge."
+      title: t('index.features.items.knowledgeBase.title'),
+      description: t('index.features.items.knowledgeBase.description')
     },
     {
       icon: <Bot size={24} />,
-      title: "Custom AI Agents",
-      description: "Build specialized AI agents tailored for your specific business needs."
+      title: t('index.features.items.customAgents.title'),
+      description: t('index.features.items.customAgents.description')
     },
     {
       icon: <Zap size={24} />,
-      title: "Real-time Processing",
-      description: "Experience minimal latency with our optimized processing pipeline."
+      title: t('index.features.items.realtime.title'),
+      description: t('index.features.items.realtime.description')
     },
     {
       icon: <Brain size={24} />,
-      title: "Advanced Reasoning",
-      description: "Leverage sophisticated language models with reasoning capabilities."
+      title: t('index.features.items.reasoning.title'),
+      description: t('index.features.items.reasoning.description')
     },
     {
       icon: <Shield size={24} />,
-      title: "Enterprise Security",
-      description: "Benefit from robust security measures protecting your sensitive data."
+      title: t('index.features.items.security.title'),
+      description: t('index.features.items.security.description')
     }
   ];
 
@@ -61,7 +63,7 @@ const Index = () => {
               className="mb-6"
             >
               <span className="px-4 py-1.5 bg-superbid-50 dark:bg-superbid-900/30 text-superbid-600 dark:text-superbid-300 rounded-full text-sm font-medium">
-                Introducing Jarvis AI
+                {t('index.intro')}
               </span>
             </motion.div>
 
@@ -71,8 +73,8 @@ const Index = () => {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="text-5xl md:text-7xl font-bold mb-6 tracking-tight"
             >
-              The Ultimate AI 
-              <span className="text-gradient block mt-2">Solution Platform</span>
+              {t('index.title')}
+              <span className="text-gradient block mt-2">{t('index.titleGradient')}</span>
             </motion.h1>
 
             <motion.p
@@ -81,7 +83,7 @@ const Index = () => {
               transition={{ duration: 0.5, delay: 0.3 }}
               className="text-xl md:text-2xl text-muted-foreground max-w-2xl mb-8"
             >
-              Create, customize, and deploy powerful AI agents with your own knowledge base in minutes.
+              {t('index.subtitle')}
             </motion.p>
 
             <motion.div
@@ -92,12 +94,12 @@ const Index = () => {
             >
               <Link to="/register">
                 <SuperbidButton variant="primary" size="lg">
-                  Get Started <ArrowRight size={16} className="ml-2" />
+                  {t('index.getStarted')} <ArrowRight size={16} className="ml-2" />
                 </SuperbidButton>
               </Link>
               <Link to="/login">
                 <SuperbidButton variant="outline" size="lg">
-                  Login to Dashboard
+                  {t('index.loginToDashboard')}
                 </SuperbidButton>
               </Link>
             </motion.div>
@@ -115,7 +117,7 @@ const Index = () => {
                       <Bot size={32} className="text-primary" />
                     </div>
                     <h3 className="text-2xl font-medium">Jarvis AI Platform</h3>
-                    <p className="text-muted-foreground mt-2">Dashboard Preview</p>
+                    <p className="text-muted-foreground mt-2">{t('index.dashboardPreview')}</p>
                   </div>
                 </div>
               </div>
@@ -129,9 +131,9 @@ const Index = () => {
       <section className="py-16 md:py-24 px-6 bg-secondary/50">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Powerful Features</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('index.features.title')}</h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Discover the comprehensive suite of tools designed to maximize your AI potential.
+              {t('index.features.subtitle')}
             </p>
           </div>
 
@@ -164,19 +166,19 @@ const Index = () => {
             transition={{ duration: 0.5 }}
             className="glass-card bg-gradient-to-br from-superbid-50 to-blue-50 dark:from-superbid-950/50 dark:to-blue-950/50 text-center"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Transform Your AI Experience?</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('index.cta.title')}</h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
-              Join thousands of businesses already leveraging Jarvis AI to create intelligent solutions.
+              {t('index.cta.subtitle')}
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Link to="/register">
                 <SuperbidButton variant="primary" size="lg">
-                  Get Started for Free
+                  {t('index.cta.getStarted')}
                 </SuperbidButton>
               </Link>
               <Link to="/contact">
                 <SuperbidButton variant="outline" size="lg">
-                  Contact Sales
+                  {t('index.cta.contactSales')}
                 </SuperbidButton>
               </Link>
             </div>
@@ -193,22 +195,22 @@ const Index = () => {
                 <span className="text-xl font-bold text-gradient">JARVIS</span>
                 <span className="text-lg font-semibold">AI</span>
               </div>
-              <p className="text-sm text-muted-foreground">Building the future of AI. Together.</p>
+              <p className="text-sm text-muted-foreground">{t('index.footer.slogan')}</p>
             </div>
             <div className="flex gap-6">
               <Link to="/terms" className="text-sm text-foreground/80 hover:text-foreground">
-                Terms
+                {t('index.footer.terms')}
               </Link>
               <Link to="/privacy" className="text-sm text-foreground/80 hover:text-foreground">
-                Privacy
+                {t('index.footer.privacy')}
               </Link>
               <Link to="/contact" className="text-sm text-foreground/80 hover:text-foreground">
-                Contact
+                {t('index.footer.contact')}
               </Link>
             </div>
           </div>
           <div className="mt-8 pt-4 border-t border-border text-center text-sm text-muted-foreground">
-            &copy; {new Date().getFullYear()} Jarvis AI. All rights reserved.
+            {t('index.footer.copyright', { year: new Date().getFullYear() })}
           </div>
         </div>
       </footer>

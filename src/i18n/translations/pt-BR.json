@@ -27,5 +27,72 @@
     "modules": "Módulos",
     "recentActivity": "Atividade Recente",
     "quickActions": "Ações Rápidas"
+  },
+  "dashboardCards": {
+    "chatInterface": {
+      "title": "Interface de Chat",
+      "description": "Interaja com seus agentes de IA através de uma interface de chat intuitiva."
+    },
+    "knowledgeBase": {
+      "title": "Base de Conhecimento",
+      "description": "Crie e gerencie suas bases de conhecimento personalizadas."
+    },
+    "aiAgents": {
+      "title": "Agentes de IA",
+      "description": "Configure e implante agentes de IA personalizados para várias tarefas."
+    },
+    "explore": "Explorar"
+  },
+  "index": {
+    "intro": "Apresentando Jarvis AI",
+    "title": "A Plataforma de IA",
+    "titleGradient": "Definitiva",
+    "subtitle": "Crie, personalize e implante poderosos agentes de IA com sua própria base de conhecimento em minutos.",
+    "getStarted": "Começar Agora",
+    "loginToDashboard": "Entrar no Painel",
+    "dashboardPreview": "Prévia do Painel",
+    "features": {
+      "title": "Recursos Poderosos",
+      "subtitle": "Descubra o conjunto abrangente de ferramentas projetadas para maximizar seu potencial de IA.",
+      "items": {
+        "chatInterface": {
+          "title": "Interface de Chat IA",
+          "description": "Interaja com modelos sofisticados de IA através de uma interface de chat intuitiva."
+        },
+        "knowledgeBase": {
+          "title": "Base de Conhecimento",
+          "description": "Crie e gerencie bancos de dados vetoriais para alimentar sua IA com conhecimento personalizado."
+        },
+        "customAgents": {
+          "title": "Agentes IA Personalizados",
+          "description": "Construa agentes de IA especializados adaptados às necessidades específicas do seu negócio."
+        },
+        "realtime": {
+          "title": "Processamento em Tempo Real",
+          "description": "Experimente latência mínima com nosso pipeline de processamento otimizado."
+        },
+        "reasoning": {
+          "title": "Raciocínio Avançado",
+          "description": "Aproveite modelos sofisticados de linguagem com capacidades de raciocínio."
+        },
+        "security": {
+          "title": "Segurança Empresarial",
+          "description": "Beneficie-se de medidas robustas de segurança que protegem seus dados sensíveis."
+        }
+      }
+    },
+    "cta": {
+      "title": "Pronto para Transformar sua Experiência com IA?",
+      "subtitle": "Junte-se a milhares de empresas que já utilizam o Jarvis AI para criar soluções inteligentes.",
+      "getStarted": "Comece Gratuitamente",
+      "contactSales": "Fale com Vendas"
+    },
+    "footer": {
+      "slogan": "Construindo o futuro da IA. Juntos.",
+      "terms": "Termos",
+      "privacy": "Privacidade",
+      "contact": "Contato",
+      "copyright": "© 2024 Jarvis AI. Todos os direitos reservados."
+    }
   }
 }

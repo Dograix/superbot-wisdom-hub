@@ -1,6 +1,7 @@
 
 import React, { ReactNode } from "react";
 import { MessageSquare, Database, Bot } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 export type ModuleItem = {
   title: string;
@@ -38,24 +39,27 @@ export type GetStartedStep = {
 };
 
 export const getDashboardData = () => {
+  // We need to use i18next directly since hooks can't be used in a regular function
+  const { t } = require('react-i18next').useTranslation();
+
   const modules: ModuleItem[] = [
     {
-      title: "Chat Interface",
-      description: "Interact with your AI agents through an intuitive chat interface.",
+      title: t('dashboardCards.chatInterface.title'),
+      description: t('dashboardCards.chatInterface.description'),
       icon: React.createElement(MessageSquare, { size: 24 }),
       to: "/chat",
       delay: 0,
     },
     {
-      title: "Knowledge Base",
-      description: "Create and manage your custom knowledge bases.",
+      title: t('dashboardCards.knowledgeBase.title'),
+      description: t('dashboardCards.knowledgeBase.description'),
       icon: React.createElement(Database, { size: 24 }),
       to: "/knowledge-base",
       delay: 100,
     },
     {
-      title: "AI Agents",
-      description: "Configure and deploy custom AI agents for various tasks.",
+      title: t('dashboardCards.aiAgents.title'),
+      description: t('dashboardCards.aiAgents.description'),
       icon: React.createElement(Bot, { size: 24 }),
       to: "/agents",
       delay: 200,

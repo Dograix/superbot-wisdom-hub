@@ -27,5 +27,72 @@
     "modules": "Modules",
     "recentActivity": "Recent Activity",
     "quickActions": "Quick Actions"
+  },
+  "dashboardCards": {
+    "chatInterface": {
+      "title": "Chat Interface",
+      "description": "Interact with your AI agents through an intuitive chat interface."
+    },
+    "knowledgeBase": {
+      "title": "Knowledge Base",
+      "description": "Create and manage your custom knowledge bases."
+    },
+    "aiAgents": {
+      "title": "AI Agents",
+      "description": "Configure and deploy custom AI agents for various tasks."
+    },
+    "explore": "Explore"
+  },
+  "index": {
+    "intro": "Introducing Jarvis AI",
+    "title": "The Ultimate AI",
+    "titleGradient": "Solution Platform",
+    "subtitle": "Create, customize, and deploy powerful AI agents with your own knowledge base in minutes.",
+    "getStarted": "Get Started",
+    "loginToDashboard": "Login to Dashboard",
+    "dashboardPreview": "Dashboard Preview",
+    "features": {
+      "title": "Powerful Features",
+      "subtitle": "Discover the comprehensive suite of tools designed to maximize your AI potential.",
+      "items": {
+        "chatInterface": {
+          "title": "AI Chat Interface",
+          "description": "Engage with sophisticated AI models through an intuitive chat interface."
+        },
+        "knowledgeBase": {
+          "title": "Knowledge Base",
+          "description": "Create and manage vector databases to power your AI with custom knowledge."
+        },
+        "customAgents": {
+          "title": "Custom AI Agents",
+          "description": "Build specialized AI agents tailored for your specific business needs."
+        },
+        "realtime": {
+          "title": "Real-time Processing",
+          "description": "Experience minimal latency with our optimized processing pipeline."
+        },
+        "reasoning": {
+          "title": "Advanced Reasoning",
+          "description": "Leverage sophisticated language models with reasoning capabilities."
+        },
+        "security": {
+          "title": "Enterprise Security",
+          "description": "Benefit from robust security measures protecting your sensitive data."
+        }
+      }
+    },
+    "cta": {
+      "title": "Ready to Transform Your AI Experience?",
+      "subtitle": "Join thousands of businesses already leveraging Jarvis AI to create intelligent solutions.",
+      "getStarted": "Get Started for Free",
+      "contactSales": "Contact Sales"
+    },
+    "footer": {
+      "slogan": "Building the future of AI. Together.",
+      "terms": "Terms",
+      "privacy": "Privacy",
+      "contact": "Contact",
+      "copyright": "© 2024 Jarvis AI. All rights reserved."
+    }
   }
 }

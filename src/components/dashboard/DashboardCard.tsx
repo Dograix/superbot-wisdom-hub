@@ -3,6 +3,7 @@ import React from "react";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
+import { useTranslation } from "react-i18next";
 
 type DashboardCardProps = {
   title: string;
@@ -23,6 +24,8 @@ const DashboardCard: React.FC<DashboardCardProps> = ({
   gradient = false,
   delay = 0,
 }) => {
+  const { t } = useTranslation();
+  
   return (
     <Link
       to={to}
@@ -40,7 +43,7 @@ const DashboardCard: React.FC<DashboardCardProps> = ({
       <h3 className="text-xl font-medium mb-2">{title}</h3>
       <p className="text-muted-foreground mb-4 flex-grow">{description}</p>
       <div className="flex items-center text-primary font-medium mt-auto">
-        <span>Explore</span>
+        <span>{t('dashboardCards.explore')}</span>
         <ArrowRight size={16} className="ml-1 transition-transform group-hover:translate-x-1" />
       </div>
     </Link>
