@@ -61,7 +61,7 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick, className }) => {
           </Button>
           
           <Link to="/" className="flex items-center gap-2">
-            <span className="font-bold text-xl hidden md:block">JARVIS AI</span>
+            <span className="font-bold text-xl text-primary">JARVIS AI</span>
           </Link>
         </div>
 

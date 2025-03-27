@@ -41,62 +41,62 @@ const Chat = () => {
         <Sidebar>
           <SidebarContent>
             <SidebarHeader className="flex items-center justify-between p-4">
-              <span className="font-bold text-xl">JARVIS AI</span>
+              <span className="font-bold text-xl text-primary">JARVIS AI</span>
             </SidebarHeader>
             
             <SidebarMenu>
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
-                  <a href="/dashboard" className="text-sidebar-foreground/80">
-                    <Home size={18} />
+                  <a href="/dashboard" className="text-sidebar-foreground/80 text-base">
+                    <Home size={20} />
                     <span>{t('common.dashboard')}</span>
                   </a>
                 </SidebarMenuButton>
               </SidebarMenuItem>
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
-                  <a href="/chat" className="text-sidebar-primary font-medium">
-                    <MessageSquare size={18} />
+                  <a href="/chat" className="text-primary font-medium text-base">
+                    <MessageSquare size={20} />
                     <span>{t('common.chat')}</span>
                   </a>
                 </SidebarMenuButton>
               </SidebarMenuItem>
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
-                  <a href="/knowledge-base" className="text-sidebar-foreground/80">
-                    <Database size={18} />
+                  <a href="/knowledge-base" className="text-sidebar-foreground/80 text-base">
+                    <Database size={20} />
                     <span>{t('common.knowledgeBase')}</span>
                   </a>
                 </SidebarMenuButton>
               </SidebarMenuItem>
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
-                  <a href="/agents" className="text-sidebar-foreground/80">
-                    <Bot size={18} />
+                  <a href="/agents" className="text-sidebar-foreground/80 text-base">
+                    <Bot size={20} />
                     <span>{t('common.agents')}</span>
                   </a>
                 </SidebarMenuButton>
               </SidebarMenuItem>
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
-                  <a href="/integrations" className="text-sidebar-foreground/80">
-                    <LinkIcon size={18} />
+                  <a href="/integrations" className="text-sidebar-foreground/80 text-base">
+                    <LinkIcon size={20} />
                     <span>{t('common.integrations')}</span>
                   </a>
                 </SidebarMenuButton>
               </SidebarMenuItem>
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
-                  <a href="/settings" className="text-sidebar-foreground/80">
-                    <Settings size={18} />
+                  <a href="/settings" className="text-sidebar-foreground/80 text-base">
+                    <Settings size={20} />
                     <span>{t('common.settings')}</span>
                   </a>
                 </SidebarMenuButton>
               </SidebarMenuItem>
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
-                  <a href="/help" className="text-sidebar-foreground/80">
-                    <HelpCircle size={18} />
+                  <a href="/help" className="text-sidebar-foreground/80 text-base">
+                    <HelpCircle size={20} />
                     <span>{t('common.help')}</span>
                   </a>
                 </SidebarMenuButton>
@@ -119,11 +119,15 @@ const Chat = () => {
               {isHistoryOpen && <ChatHistory />}
             </div>
             
-            {/* Toggle history button */}
+            {/* Toggle history button - positioned correctly on the edge of history sidebar */}
             <button 
               onClick={toggleHistory}
-              className="absolute left-[72px] top-1/2 transform -translate-y-1/2 z-10 bg-sidebar border border-sidebar-border rounded-r-md p-1 text-sidebar-foreground hover:bg-sidebar-accent transition-all duration-300"
-              style={{ left: isHistoryOpen ? "18rem" : "0" }}
+              className="absolute z-10 bg-sidebar border border-sidebar-border rounded-r-md p-1 text-sidebar-foreground hover:bg-sidebar-accent transition-all duration-300"
+              style={{ 
+                left: isHistoryOpen ? "calc(72px + 18rem)" : "72px", 
+                top: "50%",
+                transform: "translateY(-50%)"
+              }}
             >
               {isHistoryOpen ? <ChevronLeft size={20} /> : <ChevronRight size={20} />}
             </button>

@@ -35,62 +35,62 @@ const Dashboard = () => {
       <Sidebar>
         <SidebarContent>
           <SidebarHeader className="flex items-center justify-between p-4">
-            <span className="font-bold text-xl">JARVIS AI</span>
+            <span className="font-bold text-xl text-primary">JARVIS AI</span>
           </SidebarHeader>
           
           <SidebarMenu>
             <SidebarMenuItem>
               <SidebarMenuButton asChild>
-                <a href="/dashboard" className="text-sidebar-primary font-medium">
-                  <Home size={18} />
+                <a href="/dashboard" className="text-primary font-medium text-base">
+                  <Home size={20} />
                   <span>{t('common.dashboard')}</span>
                 </a>
               </SidebarMenuButton>
             </SidebarMenuItem>
             <SidebarMenuItem>
               <SidebarMenuButton asChild>
-                <a href="/chat" className="text-sidebar-foreground/80">
-                  <MessageSquare size={18} />
+                <a href="/chat" className="text-sidebar-foreground/80 text-base">
+                  <MessageSquare size={20} />
                   <span>{t('common.chat')}</span>
                 </a>
               </SidebarMenuButton>
             </SidebarMenuItem>
             <SidebarMenuItem>
               <SidebarMenuButton asChild>
-                <a href="/knowledge-base" className="text-sidebar-foreground/80">
-                  <Database size={18} />
+                <a href="/knowledge-base" className="text-sidebar-foreground/80 text-base">
+                  <Database size={20} />
                   <span>{t('common.knowledgeBase')}</span>
                 </a>
               </SidebarMenuButton>
             </SidebarMenuItem>
             <SidebarMenuItem>
               <SidebarMenuButton asChild>
-                <a href="/agents" className="text-sidebar-foreground/80">
-                  <Bot size={18} />
+                <a href="/agents" className="text-sidebar-foreground/80 text-base">
+                  <Bot size={20} />
                   <span>{t('common.agents')}</span>
                 </a>
               </SidebarMenuButton>
             </SidebarMenuItem>
             <SidebarMenuItem>
               <SidebarMenuButton asChild>
-                <a href="/integrations" className="text-sidebar-foreground/80">
-                  <LinkIcon size={18} />
+                <a href="/integrations" className="text-sidebar-foreground/80 text-base">
+                  <LinkIcon size={20} />
                   <span>{t('common.integrations')}</span>
                 </a>
               </SidebarMenuButton>
             </SidebarMenuItem>
             <SidebarMenuItem>
               <SidebarMenuButton asChild>
-                <a href="/settings" className="text-sidebar-foreground/80">
-                  <Settings size={18} />
+                <a href="/settings" className="text-sidebar-foreground/80 text-base">
+                  <Settings size={20} />
                   <span>{t('common.settings')}</span>
                 </a>
               </SidebarMenuButton>
             </SidebarMenuItem>
             <SidebarMenuItem>
               <SidebarMenuButton asChild>
-                <a href="/help" className="text-sidebar-foreground/80">
-                  <HelpCircle size={18} />
+                <a href="/help" className="text-sidebar-foreground/80 text-base">
+                  <HelpCircle size={20} />
                   <span>{t('common.help')}</span>
                 </a>
               </SidebarMenuButton>
