@@ -1,4 +1,3 @@
-
 {
   "language": "Idioma",
   "common": {
@@ -11,7 +10,9 @@
     "integrations": "Integrações",
     "settings": "Configurações",
     "help": "Ajuda",
-    "version": "v1.0.0"
+    "version": "v1.0.0",
+    "yesterday": "Ontem",
+    "daysAgo": "{{count}} dias atrás"
   },
   "login": {
     "welcomeTitle": "Bem-vindo ao Jarvis AI",
@@ -185,21 +186,23 @@
     }
   },
   "chat": {
-    "title": "Agentes de IA",
-    "newAgent": "Criar Novo Agente",
+    "title": "Chat",
     "generalAssistant": "Assistente Geral",
     "generalAssistantDesc": "Assistente de IA para fins gerais",
     "customerSupport": "Suporte ao Cliente",
     "customerSupportDesc": "Especializado em consultas de suporte",
     "salesSpecialist": "Especialista em Vendas",
     "salesSpecialistDesc": "Focado em produtos e vendas",
-    "sendMessage": "Digite uma mensagem...",
-    "active": "Ativo",
-    "inactive": "Inativo",
-    "assistantTitle": "Assistente Superbid AI",
-    "assistantDesc": "Agente de IA Geral",
+    "newAgent": "Novo Agente",
+    "assistantTitle": "Superbid AI",
+    "assistantDesc": "Assistente de IA Geral",
+    "you": "Você",
     "newChat": "Novo Chat",
-    "you": "Você"
+    "sendMessage": "Digite uma mensagem...",
+    "history": "Histórico de Chat",
+    "searchChats": "Buscar chats",
+    "noChatsFound": "Nenhum chat encontrado",
+    "clearHistory": "Limpar Histórico"
   },
   "knowledgeBase": {
     "title": "Base de Conhecimento",
@@ -267,7 +270,7 @@
     "exampleCode": "Código de Exemplo",
     "exampleCodeDesc": "Use estes exemplos para começar com nossa API",
     "jsExample": "Exemplo em JavaScript",
-    "chatIntegrations": "Integrações de Chat",
+    "chatIntegrations": "Integra��ões de Chat",
     "chatDesc": "Conecte seus agentes a plataformas de mensagens",
     "whatsapp": "WhatsApp",
     "whatsappDesc": "Conecte seu agente ao WhatsApp",
