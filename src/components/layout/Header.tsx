@@ -31,7 +31,16 @@ type HeaderProps = {
 
 const Header: React.FC<HeaderProps> = ({ onMenuClick, className }) => {
   const { t } = useTranslation();
-  const { toggleSidebar, state } = useSidebar();
+  
+  // Use a try-catch to handle cases where SidebarProvider might not be available
+  let sidebarContext = { toggleSidebar: () => {}, state: "expanded" };
+  try {
+    sidebarContext = useSidebar();
+  } catch (error) {
+    console.warn("Sidebar context not available, using fallback");
+  }
+  
+  const { toggleSidebar } = sidebarContext;
 
   return (
     <header
