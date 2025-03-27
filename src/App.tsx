@@ -16,6 +16,7 @@ import KnowledgeBase from "./pages/KnowledgeBase";
 import Agents from "./pages/Agents";
 import Integrations from "./pages/Integrations";
 import Settings from "./pages/Settings";
+import Pricing from "./pages/Pricing";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -47,6 +48,7 @@ const App = () => {
               <Route path="/agents" element={<Agents />} />
               <Route path="/integrations" element={<Integrations />} />
               <Route path="/settings" element={<Settings />} />
+              <Route path="/pricing" element={<Pricing />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>
