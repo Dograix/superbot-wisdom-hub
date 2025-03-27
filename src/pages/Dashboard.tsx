@@ -1,16 +1,16 @@
 
-import React, { useState } from "react";
+import React from "react";
 import { useTranslation } from "react-i18next";
 import Header from "@/components/layout/Header";
 import { 
   SidebarProvider, 
   Sidebar, 
   SidebarContent, 
-  SidebarTrigger,
   SidebarHeader,
   SidebarMenu,
   SidebarMenuItem,
-  SidebarMenuButton
+  SidebarMenuButton,
+  SidebarRail
 } from "@/components/ui/sidebar";
 import DashboardCard from "@/components/dashboard/DashboardCard";
 import StatCard from "@/components/dashboard/StatCard";
@@ -38,7 +38,6 @@ const Dashboard = () => {
           <SidebarContent>
             <SidebarHeader className="flex items-center justify-between p-4">
               <span className="font-bold text-xl">JARVIS AI</span>
-              <SidebarTrigger />
             </SidebarHeader>
             
             <SidebarMenu>
@@ -100,6 +99,7 @@ const Dashboard = () => {
               </SidebarMenuItem>
             </SidebarMenu>
           </SidebarContent>
+          <SidebarRail />
         </Sidebar>
 
         <div className="flex-1 flex flex-col h-screen">

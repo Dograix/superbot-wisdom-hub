@@ -7,9 +7,10 @@ import {
   Search, 
   Settings, 
   User,
-  Menu
+  Menu,
+  PanelLeft
 } from "lucide-react";
-import { SidebarTrigger } from "@/components/ui/sidebar";
+import { useSidebar } from "@/components/ui/sidebar";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
@@ -30,6 +31,7 @@ type HeaderProps = {
 
 const Header: React.FC<HeaderProps> = ({ onMenuClick, className }) => {
   const { t } = useTranslation();
+  const { toggleSidebar, state } = useSidebar();
 
   return (
     <header
@@ -40,9 +42,14 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick, className }) => {
     >
       <div className="flex h-full items-center justify-between px-4">
         <div className="flex items-center gap-4">
-          <div className="md:hidden">
-            <SidebarTrigger />
-          </div>
+          <Button 
+            variant="ghost" 
+            size="icon" 
+            className="text-muted-foreground"
+            onClick={toggleSidebar}
+          >
+            <PanelLeft className="h-5 w-5" />
+          </Button>
           
           <Link to="/" className="flex items-center gap-2">
             <span className="font-bold text-xl hidden md:block">JARVIS AI</span>

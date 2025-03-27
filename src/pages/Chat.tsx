@@ -5,19 +5,23 @@ import {
   SidebarProvider, 
   Sidebar, 
   SidebarContent, 
-  SidebarTrigger,
   SidebarHeader,
   SidebarMenu,
   SidebarMenuItem,
-  SidebarMenuButton
+  SidebarMenuButton,
+  SidebarRail
 } from "@/components/ui/sidebar";
 import ChatInterface from "@/components/chat/ChatInterface";
 import ChatHistory from "@/components/chat/ChatHistory";
 import { useTranslation } from "react-i18next";
 import { 
-  Bot, 
+  Home,
   MessageSquare, 
-  PanelLeft,
+  Database, 
+  Bot, 
+  Settings, 
+  HelpCircle, 
+  Link as LinkIcon,
   ChevronLeft,
   ChevronRight
 } from "lucide-react";
@@ -38,21 +42,68 @@ const Chat = () => {
           <SidebarContent>
             <SidebarHeader className="flex items-center justify-between p-4">
               <span className="font-bold text-xl">JARVIS AI</span>
-              <SidebarTrigger />
             </SidebarHeader>
             
             <SidebarMenu>
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
+                  <a href="/dashboard" className="text-sidebar-foreground/80">
+                    <Home size={18} />
+                    <span>{t('common.dashboard')}</span>
+                  </a>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild>
                   <a href="/chat" className="text-sidebar-primary font-medium">
-                    <MessageSquare />
+                    <MessageSquare size={18} />
                     <span>{t('common.chat')}</span>
                   </a>
                 </SidebarMenuButton>
               </SidebarMenuItem>
-              {/* Outros itens do menu principal */}
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild>
+                  <a href="/knowledge-base" className="text-sidebar-foreground/80">
+                    <Database size={18} />
+                    <span>{t('common.knowledgeBase')}</span>
+                  </a>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild>
+                  <a href="/agents" className="text-sidebar-foreground/80">
+                    <Bot size={18} />
+                    <span>{t('common.agents')}</span>
+                  </a>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild>
+                  <a href="/integrations" className="text-sidebar-foreground/80">
+                    <LinkIcon size={18} />
+                    <span>{t('common.integrations')}</span>
+                  </a>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild>
+                  <a href="/settings" className="text-sidebar-foreground/80">
+                    <Settings size={18} />
+                    <span>{t('common.settings')}</span>
+                  </a>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild>
+                  <a href="/help" className="text-sidebar-foreground/80">
+                    <HelpCircle size={18} />
+                    <span>{t('common.help')}</span>
+                  </a>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
             </SidebarMenu>
           </SidebarContent>
+          <SidebarRail />
         </Sidebar>
 
         <div className="flex-1 flex flex-col h-screen">
@@ -71,7 +122,7 @@ const Chat = () => {
             {/* Toggle history button */}
             <button 
               onClick={toggleHistory}
-              className="absolute left-72 top-1/2 transform -translate-y-1/2 z-10 bg-sidebar border border-sidebar-border rounded-r-md p-1 text-sidebar-foreground hover:bg-sidebar-accent transition-all duration-300"
+              className="absolute left-[72px] top-1/2 transform -translate-y-1/2 z-10 bg-sidebar border border-sidebar-border rounded-r-md p-1 text-sidebar-foreground hover:bg-sidebar-accent transition-all duration-300"
               style={{ left: isHistoryOpen ? "18rem" : "0" }}
             >
               {isHistoryOpen ? <ChevronLeft size={20} /> : <ChevronRight size={20} />}
