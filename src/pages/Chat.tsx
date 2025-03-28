@@ -1,155 +1,80 @@
 
 import React, { useState } from "react";
 import Header from "@/components/layout/Header";
-import { 
-  SidebarProvider, 
-  Sidebar, 
-  SidebarContent, 
-  SidebarHeader,
-  SidebarMenu,
-  SidebarMenuItem,
-  SidebarMenuButton,
-  SidebarRail
-} from "@/components/ui/sidebar";
+import Sidebar from "@/components/layout/Sidebar";
 import ChatInterface from "@/components/chat/ChatInterface";
-import ChatHistory from "@/components/chat/ChatHistory";
-import { useTranslation } from "react-i18next";
-import { 
-  Home,
-  MessageSquare, 
-  Database, 
-  Bot, 
-  Settings, 
-  HelpCircle, 
-  Link as LinkIcon,
-  ChevronLeft,
-  ChevronRight
-} from "lucide-react";
+import { Bot } from "lucide-react";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import SuperbidButton from "@/components/ui/SuperbidButton";
+import { useTranslation } from "react-i18next";
 
 const Chat = () => {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const { t } = useTranslation();
-  const [isHistoryOpen, setIsHistoryOpen] = useState(true);
 
-  const toggleHistory = () => {
-    setIsHistoryOpen(!isHistoryOpen);
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
   };
 
-  return (
-    <SidebarProvider defaultOpen={true}>
-      <div className="min-h-screen flex w-full bg-background">
-        <Sidebar>
-          <SidebarContent>
-            <SidebarHeader className="flex items-center justify-between p-4">
-              <span className="font-bold text-xl text-primary">JARVIS AI</span>
-            </SidebarHeader>
-            
-            <SidebarMenu>
-              <SidebarMenuItem>
-                <SidebarMenuButton asChild>
-                  <a href="/dashboard" className="text-sidebar-foreground/80 text-base">
-                    <Home size={20} />
-                    <span>{t('common.dashboard')}</span>
-                  </a>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
-              <SidebarMenuItem>
-                <SidebarMenuButton asChild>
-                  <a href="/chat" className="text-primary font-medium text-base">
-                    <MessageSquare size={20} />
-                    <span>{t('common.chat')}</span>
-                  </a>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
-              <SidebarMenuItem>
-                <SidebarMenuButton asChild>
-                  <a href="/knowledge-base" className="text-sidebar-foreground/80 text-base">
-                    <Database size={20} />
-                    <span>{t('common.knowledgeBase')}</span>
-                  </a>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
-              <SidebarMenuItem>
-                <SidebarMenuButton asChild>
-                  <a href="/agents" className="text-sidebar-foreground/80 text-base">
-                    <Bot size={20} />
-                    <span>{t('common.agents')}</span>
-                  </a>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
-              <SidebarMenuItem>
-                <SidebarMenuButton asChild>
-                  <a href="/integrations" className="text-sidebar-foreground/80 text-base">
-                    <LinkIcon size={20} />
-                    <span>{t('common.integrations')}</span>
-                  </a>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
-              <SidebarMenuItem>
-                <SidebarMenuButton asChild>
-                  <a href="/settings" className="text-sidebar-foreground/80 text-base">
-                    <Settings size={20} />
-                    <span>{t('common.settings')}</span>
-                  </a>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
-              <SidebarMenuItem>
-                <SidebarMenuButton asChild>
-                  <a href="/help" className="text-sidebar-foreground/80 text-base">
-                    <HelpCircle size={20} />
-                    <span>{t('common.help')}</span>
-                  </a>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
-            </SidebarMenu>
-          </SidebarContent>
-          <SidebarRail />
-        </Sidebar>
+  const agents = [
+    { id: 1, name: t('chat.generalAssistant'), description: t('chat.generalAssistantDesc'), icon: <Bot size={20} /> },
+    { id: 2, name: t('chat.customerSupport'), description: t('chat.customerSupportDesc'), icon: <Bot size={20} /> },
+    { id: 3, name: t('chat.salesSpecialist'), description: t('chat.salesSpecialistDesc'), icon: <Bot size={20} /> },
+  ];
 
-        <div className="flex-1 flex flex-col h-screen">
-          <Header />
-          
-          <div className="flex flex-1 overflow-hidden pt-16">
-            {/* History sidebar */}
-            <div 
-              className={`h-full bg-sidebar border-r border-sidebar-border transition-all duration-300 ease-in-out ${
-                isHistoryOpen ? "w-72" : "w-0"
-              }`}
-            >
-              {isHistoryOpen && <ChatHistory />}
-            </div>
-            
-            {/* Toggle history button - positioned correctly on the edge of history sidebar */}
-            <button 
-              onClick={toggleHistory}
-              className="absolute z-10 bg-sidebar border border-sidebar-border rounded-r-md p-1 text-sidebar-foreground hover:bg-sidebar-accent transition-all duration-300"
-              style={{ 
-                left: isHistoryOpen ? "calc(72px + 18rem)" : "72px", 
-                top: "50%",
-                transform: "translateY(-50%)"
-              }}
-            >
-              {isHistoryOpen ? <ChevronLeft size={20} /> : <ChevronRight size={20} />}
-            </button>
-            
-            {/* Chat area */}
-            <div className="flex-1 p-4 overflow-hidden flex flex-col">
-              <div className="flex items-center justify-between mb-4">
-                <h1 className="text-2xl font-bold">{t('common.chat')}</h1>
-                <SuperbidButton variant="outline" size="sm">
-                  <MessageSquare size={16} className="mr-2" />
-                  {t('chat.newChat')}
+  return (
+    <div className="min-h-screen bg-background">
+      <Header onMenuClick={toggleSidebar} />
+      <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
+
+      <div className="pt-20 pb-8 md:pl-64">
+        <div className="container mx-auto p-6">
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+            {/* Sidebar with agents list */}
+            <div className="lg:col-span-1">
+              <div className="sticky top-24">
+                <h2 className="text-xl font-bold mb-4">{t('chat.title')}</h2>
+                <div className="space-y-3 mb-6">
+                  {agents.map((agent) => (
+                    <Card 
+                      key={agent.id}
+                      className={`cursor-pointer hover:border-primary transition-colors ${
+                        agent.id === 1 ? "border-primary" : ""
+                      }`}
+                    >
+                      <CardHeader className="p-4 pb-2">
+                        <div className="flex items-center space-x-2">
+                          <div className={`p-1.5 rounded-full ${
+                            agent.id === 1 ? "bg-primary/10 text-primary" : "bg-secondary"
+                          }`}>
+                            {agent.icon}
+                          </div>
+                          <CardTitle className="text-base">{agent.name}</CardTitle>
+                        </div>
+                      </CardHeader>
+                      <CardContent className="p-4 pt-1">
+                        <CardDescription>
+                          {agent.description}
+                        </CardDescription>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+                
+                <SuperbidButton variant="outline" fullWidth>
+                  <Bot size={16} className="mr-2" /> {t('chat.newAgent')}
                 </SuperbidButton>
               </div>
-              
-              <div className="flex-1 overflow-hidden">
-                <ChatInterface />
-              </div>
+            </div>
+
+            {/* Chat interface */}
+            <div className="lg:col-span-3 h-[calc(100vh-180px)]">
+              <ChatInterface className="h-full" />
             </div>
           </div>
         </div>
       </div>
-    </SidebarProvider>
+    </div>
   );
 };
 

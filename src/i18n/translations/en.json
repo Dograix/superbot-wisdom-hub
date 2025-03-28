@@ -1,3 +1,4 @@
+
 {
   "language": "Language",
   "common": {
@@ -10,9 +11,7 @@
     "integrations": "Integrations",
     "settings": "Settings",
     "help": "Help",
-    "version": "v1.0.0",
-    "yesterday": "Yesterday",
-    "daysAgo": "{{count}} days ago"
+    "version": "v1.0.0"
   },
   "login": {
     "welcomeTitle": "Welcome to Jarvis AI",
@@ -186,23 +185,21 @@
     }
   },
   "chat": {
-    "title": "Chat",
+    "title": "AI Agents",
+    "newAgent": "Create New Agent",
     "generalAssistant": "General Assistant",
-    "generalAssistantDesc": "AI assistant for general purposes",
+    "generalAssistantDesc": "All-purpose AI assistant",
     "customerSupport": "Customer Support",
     "customerSupportDesc": "Specialized in support queries",
     "salesSpecialist": "Sales Specialist",
-    "salesSpecialistDesc": "Focused on products and sales",
-    "newAgent": "New Agent",
-    "assistantTitle": "Superbid AI",
-    "assistantDesc": "General AI Assistant",
-    "you": "You",
-    "newChat": "New Chat",
+    "salesSpecialistDesc": "Product and sales focused",
     "sendMessage": "Type a message...",
-    "history": "Chat History",
-    "searchChats": "Search chats",
-    "noChatsFound": "No chats found",
-    "clearHistory": "Clear History"
+    "active": "Active",
+    "inactive": "Inactive",
+    "assistantTitle": "Superbid AI Assistant",
+    "assistantDesc": "General AI Agent",
+    "newChat": "New Chat",
+    "you": "You"
   },
   "knowledgeBase": {
     "title": "Knowledge Base",

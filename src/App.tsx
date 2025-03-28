@@ -6,7 +6,6 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { LanguageProvider } from "./context/LanguageContext";
-import { SidebarProvider } from "@/components/ui/sidebar";
 import "./i18n/i18n";
 import Index from "./pages/Index";
 import Login from "./pages/Login";
@@ -43,36 +42,12 @@ const App = () => {
               <Route path="/" element={<Index />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
-              <Route path="/dashboard" element={
-                <SidebarProvider defaultOpen={true}>
-                  <Dashboard />
-                </SidebarProvider>
-              } />
-              <Route path="/chat" element={
-                <SidebarProvider defaultOpen={true}>
-                  <Chat />
-                </SidebarProvider>
-              } />
-              <Route path="/knowledge-base" element={
-                <SidebarProvider defaultOpen={true}>
-                  <KnowledgeBase />
-                </SidebarProvider>
-              } />
-              <Route path="/agents" element={
-                <SidebarProvider defaultOpen={true}>
-                  <Agents />
-                </SidebarProvider>
-              } />
-              <Route path="/integrations" element={
-                <SidebarProvider defaultOpen={true}>
-                  <Integrations />
-                </SidebarProvider>
-              } />
-              <Route path="/settings" element={
-                <SidebarProvider defaultOpen={true}>
-                  <Settings />
-                </SidebarProvider>
-              } />
+              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/chat" element={<Chat />} />
+              <Route path="/knowledge-base" element={<KnowledgeBase />} />
+              <Route path="/agents" element={<Agents />} />
+              <Route path="/integrations" element={<Integrations />} />
+              <Route path="/settings" element={<Settings />} />
               <Route path="/pricing" element={<Pricing />} />
               <Route path="*" element={<NotFound />} />
             </Routes>

@@ -1,14 +1,9 @@
 
 import React, { useState, useRef, useEffect } from "react";
-import { Send, Bot, User, Paperclip, ChevronDown, MessageSquare } from "lucide-react";
-import SuperbidButton from "@/components/ui/SuperbidButton";
+import { Send, Bot, User, Paperclip, Sparkles } from "lucide-react";
+import SuperbidButton from "../ui/SuperbidButton";
 import { cn } from "@/lib/utils";
 import { useTranslation } from "react-i18next";
-import { 
-  Popover,
-  PopoverContent,
-  PopoverTrigger
-} from "@/components/ui/popover";
 
 type Message = {
   id: string;
@@ -33,11 +28,6 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ className }) => {
   ]);
   const [newMessage, setNewMessage] = useState("");
   const [isTyping, setIsTyping] = useState(false);
-  const [selectedAgent, setSelectedAgent] = useState({
-    id: 1,
-    name: t('chat.generalAssistant'),
-    icon: <Bot size={16} className="text-primary" />
-  });
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
@@ -90,14 +80,26 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ className }) => {
     }
   };
 
-  const agents = [
-    { id: 1, name: t('chat.generalAssistant'), icon: <Bot size={16} className="text-primary" /> },
-    { id: 2, name: t('chat.customerSupport'), icon: <Bot size={16} className="text-blue-500" /> },
-    { id: 3, name: t('chat.salesSpecialist'), icon: <Bot size={16} className="text-green-500" /> },
-  ];
-
   return (
-    <div className={cn("flex flex-col h-full rounded-xl overflow-hidden border border-border shadow-sm bg-card", className)}>
+    <div className={cn("flex flex-col h-full rounded-xl overflow-hidden glass", className)}>
+      {/* Chat header */}
+      <div className="p-4 border-b border-border flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <div className="p-2 bg-primary/10 rounded-full">
+            <Bot size={18} className="text-primary" />
+          </div>
+          <div>
+            <h3 className="font-medium">{t('chat.assistantTitle')}</h3>
+            <p className="text-xs text-muted-foreground">{t('chat.assistantDesc')}</p>
+          </div>
+        </div>
+        <div>
+          <SuperbidButton variant="outline" size="sm">
+            <Sparkles size={14} className="mr-1" /> {t('chat.newChat')}
+          </SuperbidButton>
+        </div>
+      </div>
+
       {/* Chat messages */}
       <div className="flex-1 overflow-y-auto p-4 space-y-4">
         {messages.map((message) => (
@@ -110,20 +112,20 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ className }) => {
           >
             <div
               className={cn(
-                "max-w-[80%] rounded-2xl p-3",
+                "max-w-[80%] rounded-2xl p-4",
                 message.sender === "user"
-                  ? "bg-primary text-primary-foreground rounded-br-none"
-                  : "bg-secondary text-secondary-foreground rounded-bl-none"
+                  ? "bg-primary text-primary-foreground rounded-tr-none"
+                  : "bg-secondary text-secondary-foreground rounded-tl-none"
               )}
             >
               <div className="flex items-center gap-2 mb-1">
                 {message.sender === "ai" ? (
-                  selectedAgent.icon
+                  <Bot size={16} className="text-primary" />
                 ) : (
                   <User size={16} />
                 )}
                 <span className="font-medium text-sm">
-                  {message.sender === "user" ? t('chat.you') : selectedAgent.name}
+                  {message.sender === "user" ? t('chat.you') : "Superbid AI"}
                 </span>
               </div>
               <p className="text-sm">{message.content}</p>
@@ -136,10 +138,10 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ className }) => {
 
         {isTyping && (
           <div className="flex justify-start">
-            <div className="bg-secondary text-secondary-foreground rounded-2xl rounded-bl-none p-3 max-w-[80%]">
+            <div className="bg-secondary text-secondary-foreground rounded-2xl rounded-tl-none p-4 max-w-[80%]">
               <div className="flex items-center gap-2 mb-1">
-                {selectedAgent.icon}
-                <span className="font-medium text-sm">{selectedAgent.name}</span>
+                <Bot size={16} className="text-primary" />
+                <span className="font-medium text-sm">Superbid AI</span>
               </div>
               <div className="flex space-x-1">
                 <div className="w-2 h-2 rounded-full bg-primary/70 animate-pulse"></div>
@@ -153,41 +155,11 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ className }) => {
       </div>
 
       {/* Chat input */}
-      <div className="p-3 border-t border-border">
+      <div className="p-4 border-t border-border">
         <div className="flex items-center gap-2">
-          <Popover>
-            <PopoverTrigger asChild>
-              <button className="p-2 rounded-full hover:bg-secondary flex items-center gap-1 text-sm text-muted-foreground">
-                {selectedAgent.icon}
-                <span className="hidden sm:inline">{selectedAgent.name}</span>
-                <ChevronDown size={14} />
-              </button>
-            </PopoverTrigger>
-            <PopoverContent className="w-52 p-2">
-              <div className="space-y-1">
-                {agents.map((agent) => (
-                  <button
-                    key={agent.id}
-                    className={cn(
-                      "w-full flex items-center gap-2 p-2 rounded-md text-sm transition-colors",
-                      selectedAgent.id === agent.id 
-                        ? "bg-primary/10 text-primary" 
-                        : "hover:bg-secondary"
-                    )}
-                    onClick={() => setSelectedAgent(agent)}
-                  >
-                    {agent.icon}
-                    <span>{agent.name}</span>
-                  </button>
-                ))}
-              </div>
-            </PopoverContent>
-          </Popover>
-          
           <button className="p-2 rounded-full hover:bg-secondary">
             <Paperclip size={18} className="text-muted-foreground" />
           </button>
-          
           <input
             type="text"
             value={newMessage}
@@ -201,7 +173,6 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ className }) => {
               }
             }}
           />
-          
           <SuperbidButton
             onClick={handleSendMessage}
             disabled={!newMessage.trim()}
