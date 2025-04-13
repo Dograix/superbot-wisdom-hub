@@ -33,7 +33,7 @@ const SuperbidButton: React.FC<SuperbidButtonProps> = ({
       case "secondary":
         return "bg-secondary text-secondary-foreground hover:bg-secondary/80";
       case "outline":
-        return "border border-input bg-background hover:bg-accent hover:text-accent-foreground";
+        return "border border-input bg-primary text-white hover:bg-primary/90";
       case "ghost":
         return "hover:bg-accent hover:text-accent-foreground";
       case "link":
