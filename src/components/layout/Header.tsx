@@ -6,6 +6,7 @@ import { useTranslation } from "react-i18next";
 import SuperbidButton from "../ui/SuperbidButton";
 import LanguageSwitcher from "../ui/LanguageSwitcher";
 import { cn } from "@/lib/utils";
+import { useTheme } from "@/context/ThemeContext";
 
 type HeaderProps = {
   onMenuClick?: () => void;
@@ -13,7 +14,7 @@ type HeaderProps = {
 
 const Header: React.FC<HeaderProps> = ({ onMenuClick }) => {
   const { t } = useTranslation();
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const { isDarkMode, toggleTheme } = useTheme();
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -24,21 +25,6 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick }) => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  useEffect(() => {
-    // Check system preference
-    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    setIsDarkMode(prefersDark);
-    
-    if (prefersDark) {
-      document.documentElement.classList.add("dark");
-    }
-  }, []);
-
-  const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode);
-    document.documentElement.classList.toggle("dark");
-  };
 
   return (
     <header
@@ -70,7 +56,7 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick }) => {
             <SuperbidButton
               variant="ghost"
               size="icon"
-              onClick={toggleDarkMode}
+              onClick={toggleTheme}
               className="rounded-full w-10 h-10"
             >
               {isDarkMode ? <Sun size={18} /> : <Moon size={18} />}
